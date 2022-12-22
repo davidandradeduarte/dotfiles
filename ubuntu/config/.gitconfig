@@ -1,0 +1,17 @@
+[user]
+name = David Duarte
+email = davidandradeduarte@gmail.com
+username = davidandradeduarte
+
+[core]
+editor = vim
+
+[init]
+defaultBranch = main
+
+[alias]
+ss = status -s
+co = checkout
+cb = checkout -b
+fp = !git fetch && git pull --no-rebase
+alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /

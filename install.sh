@@ -122,6 +122,10 @@ symlink() {
         inf "Backing up $(_g $1) to $(_g $1.bak.$epoch)"
         mv "$1" "$1.bak.$epoch"
     fi
+    if [ ! -e "$2" ]; then
+        err "File $(_r $2) doesn't exist"
+        exit 1
+    fi
     inf "Creating symbolic link from $(_g $2) to $(_g $1)"
     ln -sf "$2" "$1"
 }
