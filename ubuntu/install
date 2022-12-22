@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-inf "Updating apt and upgrading existing packages"
+inf "Updating and upgrading $(_g apt)"
 sudo apt update && sudo apt upgrade -y
 
 if [ $yes -eq 1 ]; then
@@ -50,10 +50,9 @@ rm -f /tmp/$gotar
 symlink $HOME/.bashrc $dir/ubuntu/config/.bashrc
 symlink $HOME/.zshrc $dir/ubuntu/config/.zshrc
 
-if ! grep -q $shell /etc/shells; then
-    err "$(_r $shell) is not a valid shell"
+if [ -z $(which $shell) ]; then
+    err "Failed to set $(_r $shell) as default shell"
     exit 1
 fi
-
 inf "Setting $(_g $(which $shell)) as default shell"
 sudo chsh -s $(which $shell) $(whoami)

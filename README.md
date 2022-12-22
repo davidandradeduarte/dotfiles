@@ -4,9 +4,11 @@ A dotfiles manager for personal use.
 
 No automation tools being used, just plain shell scripts and symbolic links.
 
-Currently supports: macOS, Ubuntu, Fedora.
+Currently supports: `macOS`, `Ubuntu`, `Fedora`.
 
 Use at your own risk.
+
+Dependencies: `sudo`, `bash`, `git`, `curl`.
 
 Table of Contents
 -----------------
@@ -47,13 +49,15 @@ All flags are available as environment variables in their --`name` form.
 Using flags:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dot/HEAD/install.sh | bash -s -- -d "$HOME/.dot" -s zsh -y
+curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dot/HEAD/install.sh | \
+bash -s -- -d "$HOME/.dot" -s zsh -y
 ```
 
 Using environment variables:
 
 ```sh
-dir="$HOME/.dot" shell=zsh yes=true curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dot/HEAD/install.sh | bash
+dir="$HOME/.dot" shell=zsh yes=true \
+curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dot/HEAD/install.sh | bash
 ```
 
 *(booleans can be `true` or `1`)*
@@ -71,8 +75,6 @@ docker run -it --rm -e dir="$HOME/.dot" -e shell=zsh -e yes=true davidduarte/dot
 ```
 
 See the available tags [here](https://hub.docker.com/r/davidduarte/dotfiles/tags).
-
-Available images:
 
 ## Testing
 

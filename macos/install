@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
 if test ! $(which brew); then
-    inf "Installing Homebrew"
+    inf "Installing $(_g Homebrew)
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
-    inf "Updating Homebrew"
+    inf "Updating $(_g Homebrew)
     brew update
+    # brew upgrade
 fi
 
 formulae=(
@@ -55,7 +56,7 @@ formulae=(
     yq
 )
 
-inf "Installing formulae"
+inf "Installing formulae $(_g ${formulae[@]})"
 brew install -v ${formulae[@]}
 
 casks=(
@@ -83,16 +84,15 @@ casks=(
     meetingbar
     # balenaetcher
     caffeine
-    bitwarden
+    # bitwarden # the brew version can't be used for browser integration
 )
 
-inf "Installing casks"
+inf "Installing casks $(_g ${casks[@]})"
 brew install -v --cask ${casks[@]}
 
-if ! grep -q $shell /etc/shells; then
-    err "$(_r $shell) is not a valid shell"
+if [ -z $(which $shell) ]; then
+    err "Failed to set $(_r $shell) as default shell"
     exit 1
 fi
-
 inf "Setting $(_g $(which $shell)) as default shell"
 sudo chsh -s $(which $shell) $(whoami)
