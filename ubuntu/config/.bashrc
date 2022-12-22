@@ -117,5 +117,6 @@ if ! shopt -oq posix; then
 fi
 
 # Custom
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+. "$HOME/.cargo/env"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

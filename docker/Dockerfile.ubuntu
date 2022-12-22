@@ -15,8 +15,8 @@ ENV local=${local}
 RUN apt-get update && \
     apt install -y sudo curl git
 
-COPY docker/entrypoint /tmp/entrypoint
-RUN chmod +x /tmp/entrypoint
+COPY docker/entrypoint.sh /tmp/entrypoint.sh
+RUN chmod +x /tmp/entrypoint.sh
 
 RUN useradd -ms /bin/bash david
 RUN echo '%david ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
@@ -26,4 +26,4 @@ WORKDIR /home/david
 COPY --chown=david:david . /tmp/.dotfiles
 
 ENTRYPOINT dir=${dir} shell=${shell} yes=${yes} local=${local} \
-    /tmp/entrypoint
+    /tmp/entrypoint.sh

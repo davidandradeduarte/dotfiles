@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
 
-install_url=https://raw.githubusercontent.com/davidandradeduarte/dotfiles/HEAD/install
-
 set -e
 
 if [ "$local" == "true" ] || [ "$local" == "1" ]; then
     dir=$dir shell=$shell yes=$yes local=$local \
-        /bin/bash /tmp/.dotfiles/install
+        bash /tmp/.dotfiles/install.sh
 else
     dir=$dir shell=$shell yes=$yes local=$local \
-        /bin/bash <(curl -fsSL $install_url)
+        bash <(curl -fsSL "https://raw.githubusercontent.com/davidandradeduarte/dotfiles/HEAD/install.sh")
 fi
 
 if [ $? -ne 0 ]; then

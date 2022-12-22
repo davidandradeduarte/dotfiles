@@ -1,5 +1,5 @@
 install:
-	@./install \
+	@./install.sh \
 	$(if $(dir),-d $(dir)) \
 	$(if $(shell),-s $(shell)) \
 	$(if $(filter true 1,$(yes)),-y) \

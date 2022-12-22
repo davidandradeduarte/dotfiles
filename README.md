@@ -21,7 +21,7 @@ Table of Contents
 ## Installation
 
 ```sh
-bash <(curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dotfiles/HEAD/install)
+bash <(curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dotfiles/HEAD/install.sh)
 
 ```
 
@@ -30,7 +30,7 @@ Alternatively, you can clone the repository and run the `install` script:
 ```sh
 git clone https://github.com/davidandradeduarte/dotfiles.git
 cd dotfiles
-./install
+./install.sh
 ```
 
 **Options**
@@ -50,7 +50,7 @@ All flags are available as environment variables in their --`name` form.
 Using flags:
 
 ```sh
-bash <(curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dotfiles/HEAD/install) \
+bash <(curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dotfiles/HEAD/install.sh) \
     -d $HOME/.dot -s zsh -y
 ```
 
@@ -58,7 +58,7 @@ Using environment variables:
 
 ```sh
 dir=$HOME/.dot shell=zsh yes=true \
-    bash <(curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dotfiles/HEAD/install)
+    bash <(curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dotfiles/HEAD/install.sh)
 ```
 
 *(booleans can be `true` or `1`)*

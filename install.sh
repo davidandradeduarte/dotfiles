@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+need_cmd "curl"
+
 remote_ssh=git@github.com:davidandradeduarte/dotfiles.git
 remote_https=https://github.com/davidandradeduarte/dotfiles.git
 epoch=$(date +%s)
@@ -43,15 +45,6 @@ dbg() {
     fi
 }
 
-symlink() {
-    if [ -f "$1" ] && [ ! -L "$1" ] && [ ! "$(readlink "$1")" == "$2" ]; then
-        inf "Backing up $(_g $1) to $(_g $1.bak.$epoch)"
-        mv "$1" "$1.bak.$epoch"
-    fi
-    inf "Creating symbolic link from $(_g $2) to $(_g $1)"
-    ln -sf "$2" "$1"
-}
-
 _g() {
     echo -e "${cg}$@${cn}"
 }
@@ -67,6 +60,26 @@ _r() {
 _c() {
     echo -e "${cd}$1${cn}"
 }
+
+symlink() {
+    if [ -f "$1" ] && [ ! -L "$1" ] && [ ! "$(readlink "$1")" == "$2" ]; then
+        inf "Backing up $(_g $1) to $(_g $1.bak.$epoch)"
+        mv "$1" "$1.bak.$epoch"
+    fi
+    inf "Creating symbolic link from $(_g $2) to $(_g $1)"
+    ln -sf "$2" "$1"
+}
+
+need_cmd() {
+    if ! command -v "$1" "$1" >/dev/null 2>&1; then
+        err "Need $(_r $1) (command not found)"
+    fi
+}
+
+need_cmd "git"
+need_cmd "curl"
+need_cmd "bash"
+need_cmd "sudo"
 
 dir=${dir:-$HOME/.dotfiles}
 shell=${shell:-$SHELL}
@@ -201,8 +214,8 @@ else
 fi
 
 inf "Installing dotfiles for $(_g $distro)"
-if [ -f "$dir/$distro/install" ]; then
-    . "$dir/$distro/install"
+if [ -f "$dir/$distro/install.sh" ]; then
+    . "$dir/$distro/install.sh"
 else
     err "No install script for $(_r $distro)"
     exit 1
@@ -213,7 +226,7 @@ if [ -f /.dockerenv ]; then
     if [ -d "/tmp/.dotfiles" ]; then
         rm -rf "/tmp/.dotfiles"
     fi
-    sudo rm -f "/tmp/entrypoint"
+    sudo rm -f "/tmp/entrypoint.sh"
 fi
 
 inf "Launching shell $(_g $shell)"

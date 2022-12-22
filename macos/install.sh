@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
+set -e
+
 if test ! $(which brew); then
-    inf "Installing $(_g Homebrew)
+    inf "Installing $(_g homebrew)"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
-    inf "Updating $(_g Homebrew)
-    brew update
-    # brew upgrade
+    inf "Updating and upgrading $(_g homebrew)"
+    brew update && brew upgrade
 fi
 
 formulae=(
@@ -56,7 +57,7 @@ formulae=(
     yq
 )
 
-inf "Installing formulae $(_g ${formulae[@]})"
+inf "Installing brew formulae $(_g ${formulae[@]})"
 brew install -v ${formulae[@]}
 
 casks=(
@@ -87,7 +88,7 @@ casks=(
     # bitwarden # the brew version can't be used for browser integration
 )
 
-inf "Installing casks $(_g ${casks[@]})"
+inf "Installing brew casks $(_g ${casks[@]})"
 brew install -v --cask ${casks[@]}
 
 if [ -z $(which $shell) ]; then
