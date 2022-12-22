@@ -63,11 +63,9 @@ sudo tar xf lazygit.tar.gz -C /usr/local/bin lazygit
 rm -f lazygit.tar.gz
 
 inf "Installing $(_g go)"
-if [[ $arch == "aarch64" ]]; then
-    gotar="go1.19.4.linux-arm64.tar.gz"
-else
-    gotar="go1.19.4.linux-amd64.tar.gz"
-fi
+goarch=$(if [[ $arch == "aarch64" ]]; then echo "arm64"; else echo "amd64"; fi)
+goversion=$(curl -s curl "https://go.dev/VERSION?m=text")
+gotar="$goversion.linux-$goarch.tar.gz"
 wget "https://go.dev/dl/$gotar" -O /tmp/$gotar
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf /tmp/$gotar
 rm -f /tmp/$gotar
@@ -94,10 +92,3 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 inf "Creating symlinks"
 symlink $HOME/.bashrc $dir/ubuntu/config/.bashrc
 symlink $HOME/.zshrc $dir/ubuntu/config/.zshrc
-
-if [ -z $(which $shell) ]; then
-    err "Failed to set $(_r $shell) as default shell"
-    exit 1
-fi
-inf "Setting $(_g $(which $shell)) as default shell"
-sudo chsh -s $(which $shell) $(whoami)

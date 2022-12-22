@@ -210,6 +210,14 @@ else
     exit 1
 fi
 
+if [ -z $(which $shell) ]; then
+    err "Failed to set $(_r $shell) as default shell"
+    exit 1
+fi
+inf "Setting $(_g $(which $shell)) as default shell"
+sudo chsh -s $(which $shell) $(whoami)
+
+
 inf "Cleaning up"
 if [ -f /.dockerenv ]; then
     if [ -d "/tmp/.dotfiles" ]; then

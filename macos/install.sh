@@ -90,10 +90,3 @@ casks=(
 
 inf "Installing brew casks $(_g ${casks[@]})"
 brew install -v --cask ${casks[@]}
-
-if [ -z $(which $shell) ]; then
-    err "Failed to set $(_r $shell) as default shell"
-    exit 1
-fi
-inf "Setting $(_g $(which $shell)) as default shell"
-sudo chsh -s $(which $shell) $(whoami)
