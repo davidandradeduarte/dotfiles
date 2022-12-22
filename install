@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-remote_ssh=git@github.com:davidandradeduarte/dotdot.git
-remote_https=https://github.com/davidandradeduarte/dotdot.git
+remote_ssh=git@github.com:davidandradeduarte/dotfiles.git
+remote_https=https://github.com/davidandradeduarte/dotfiles.git
 epoch=$(date +%s)
 cg="\033[1;32m"
 cy="\033[1;33m"

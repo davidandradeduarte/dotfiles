@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-install_url=https://raw.githubusercontent.com/davidandradeduarte/dotdot/HEAD/install
+install_url=https://raw.githubusercontent.com/davidandradeduarte/dotfiles/HEAD/install
 
 set -e
 
