@@ -59,7 +59,7 @@ dir=$HOME/.dot shell=zsh yes=true \
     bash <(curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dotfiles/HEAD/install.sh)
 ```
 
-*(booleans can be `true` or `1`)*
+(booleans can be `true` or `1`)
 
 ## Docker
 
@@ -91,7 +91,7 @@ Spin up a container with Ubuntu to test local changes:
 make ubuntu local=true
 ```
 
-*(if `local=true` is not set, it will clone the remote repository instead of copying your local changes)*
+(if `local=true` is not set, it will clone the remote repository instead of copying your local changes)
 
 Using all options:
 
