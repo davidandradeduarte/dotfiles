@@ -70,17 +70,6 @@ symlink() {
     ln -sf "$2" "$1"
 }
 
-need_cmd() {
-    if ! command -v "$1" "$1" >/dev/null 2>&1; then
-        err "Need $(_r $1) (command not found)"
-    fi
-}
-
-need_cmd "git"
-need_cmd "curl"
-need_cmd "bash"
-need_cmd "sudo"
-
 dir=${dir:-$HOME/.dotfiles}
 shell=${shell:-$SHELL}
 yes=${yes:-0}

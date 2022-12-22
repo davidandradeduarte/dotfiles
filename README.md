@@ -8,8 +8,6 @@ Currently supports: macOS, Ubuntu, Fedora.
 
 Use at your own risk.
 
-Dependencies: `sudo`, `bash`, `git`, `curl`.
-
 Table of Contents
 -----------------
 
