@@ -213,7 +213,7 @@ if [ -f /.dockerenv ]; then
     if [ -d "/tmp/.dotfiles" ]; then
         rm -rf "/tmp/.dotfiles"
     fi
-    sudo rm -f "/tmp/entrypoint.sh"
+    sudo rm -f "/tmp/entrypoint"
 fi
 
 inf "Launching shell $(_g $shell)"

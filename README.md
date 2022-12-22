@@ -4,7 +4,7 @@ A dotfiles manager for personal use.
 
 No automation tools being used, just plain shell scripts and symbolic links.
 
-Currently supports: `macOS`, `Ubuntu`, `Fedora`.
+Currently supports: macOS, Ubuntu, Fedora.
 
 Use at your own risk.
 
@@ -21,7 +21,8 @@ Table of Contents
 ## Installation
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dotdot/HEAD/install | bash
+bash <(curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dotdot/HEAD/install)
+
 ```
 
 Alternatively, you can clone the repository and run the `install` script:
@@ -49,15 +50,14 @@ All flags are available as environment variables in their --`name` form.
 Using flags:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dot/HEAD/install.sh | \
-bash -s -- -d "$HOME/.dot" -s zsh -y
+bash <(curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dotdot/HEAD/install) -d $HOME/.dot -s zsh -y
 ```
 
 Using environment variables:
 
 ```sh
-dir="$HOME/.dot" shell=zsh yes=true \
-curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dot/HEAD/install.sh | bash
+dir=$HOME/.dot shell=zsh yes=true \
+curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dotdot/HEAD/install | bash
 ```
 
 *(booleans can be `true` or `1`)*
@@ -71,7 +71,7 @@ docker run -it --rm davidduarte/dotfiles:ubuntu
 All options are available as environment variables too:
 
 ```sh
-docker run -it --rm -e dir="$HOME/.dot" -e shell=zsh -e yes=true davidduarte/dotfiles:ubuntu
+docker run -it --rm -e dir=$HOME/.dot -e shell=zsh -e yes=true davidduarte/dotfiles:ubuntu
 ```
 
 See the available tags [here](https://hub.docker.com/r/davidduarte/dotfiles/tags).
@@ -97,7 +97,7 @@ make ubuntu local=true
 Using all options:
 
 ```sh
-make ubuntu dir="$HOME/.dot" shell=zsh yes=true local=true quiet=true
+make ubuntu dir=$HOME/.dot shell=zsh yes=true local=true quiet=true
 ```
 
 See the available targets in the [Makefile](Makefile).
