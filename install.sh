@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-need_cmd "curl"
+set -e
 
 remote_ssh=git@github.com:davidandradeduarte/dotfiles.git
 remote_https=https://github.com/davidandradeduarte/dotfiles.git
@@ -12,6 +12,62 @@ cn="\033[0m"
 os=$(uname -s | tr '[:upper:]' '[:lower:]')
 arch=$(uname -m | tr '[:upper:]' '[:lower:]')
 distro=$(if [ "$os" == "linux" ]; then cat /etc/os-release | grep "^ID=" | cut -d "=" -f 2; else echo "macos"; fi)
+
+dir=${dir:-$HOME/.dotfiles}
+shell=${shell:-$SHELL}
+yes=${yes:-0}
+local=${local:-0}
+
+if [ "$yes" == "true" ]; then
+    yes=1
+fi
+if [ "$local" == "true" ]; then
+    local=1
+fi
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+    --dir | -d)
+        shift
+        dir=$1
+        ;;
+    --shell | -s)
+        shift
+        shell=$1
+        ;;
+    --yes | -y)
+        yes=1
+        ;;
+    --local | -l)
+        local=1
+        ;;
+    --help | -h)
+        echo "Usage: $0 [options]"
+        echo ""
+        echo "Options:"
+        echo "  -d, --dir <dir>          Dotfiles directory (default: \$HOME/.dotfiles)"
+        echo "  -s, --shell <shell>      Default shell (default: \$SHELL)"
+        echo "  -y, --yes                No prompt"
+        echo "  -l, --local              Local mode"
+        echo "  -h, --help               Show help"
+        echo ""
+        echo "Example: $0 -d /location -s zsh -y -l"
+        echo ""
+        echo "All options are available as variables in their --name format."
+        echo "The only difference is that booleans need to be set to 1 or true."
+        echo "Arguments override the variables."
+        echo ""
+        echo "Example: dir=/location shell=zsh yes=true local=true $0"
+        echo ""
+        exit 0
+        ;;
+    *)
+        err "Invalid option: $(_r $1)" >&2
+        exit 1
+        ;;
+    esac
+    shift
+done
 
 inf() {
     if [ "$1" == "-n" ]; then
@@ -70,62 +126,6 @@ symlink() {
     ln -sf "$2" "$1"
 }
 
-dir=${dir:-$HOME/.dotfiles}
-shell=${shell:-$SHELL}
-yes=${yes:-0}
-local=${local:-0}
-
-if [ "$yes" == "true" ]; then
-    yes=1
-fi
-if [ "$local" == "true" ]; then
-    local=1
-fi
-
-while [[ $# -gt 0 ]]; do
-    case "$1" in
-    --dir | -d)
-        shift
-        dir=$1
-        ;;
-    --shell | -s)
-        shift
-        shell=$1
-        ;;
-    --yes | -y)
-        yes=1
-        ;;
-    --local | -l)
-        local=1
-        ;;
-    --help | -h)
-        echo "Usage: $0 [options]"
-        echo ""
-        echo "Options:"
-        echo "  -d, --dir <dir>          Dotfiles directory (default: \$HOME/.dotfiles)"
-        echo "  -s, --shell <shell>      Default shell (default: \$SHELL)"
-        echo "  -y, --yes                No prompt"
-        echo "  -l, --local              Local mode"
-        echo "  -h, --help               Show help"
-        echo ""
-        echo "Example: $0 -d /location -s zsh -y -l"
-        echo ""
-        echo "All options are available as variables in their --name format."
-        echo "The only difference is that booleans need to be set to 1 or true."
-        echo "Arguments override the variables."
-        echo ""
-        echo "Example: dir=/location shell=zsh yes=true local=true $0"
-        echo ""
-        exit 0
-        ;;
-    *)
-        err "Invalid option: $(_r $1)" >&2
-        exit 1
-        ;;
-    esac
-    shift
-done
-
 echo "---------------------------------------------"
 echo -e "${cg}
           __      __  _____ __         
@@ -145,8 +145,6 @@ echo -e "OS: $(_g $os)"
 echo -e "Distro: $(_g $distro)"
 echo -e "Arch: $(_g $arch)"
 echo "---------------------------------------------"
-
-set -e
 
 sudo -v
 if [ $? -ne 0 ]; then
@@ -216,7 +214,6 @@ if [ -z $(which $shell) ]; then
 fi
 inf "Setting $(_g $(which $shell)) as default shell"
 sudo chsh -s $(which $shell) $(whoami)
-
 
 inf "Cleaning up"
 if [ -f /.dockerenv ]; then
