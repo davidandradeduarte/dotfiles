@@ -74,7 +74,7 @@ rm -f /tmp/$gotar
 
 go_modules=(
     # github.com/derailed/k9s@latest # go.mod contains replace directive, can't install
-    github.com/derailed/k9s@v0.26.2 # TODO: disable verbose
+    github.com/derailed/k9s@v0.26.2
 )
 
 inf "Installing go modules $(_g ${go_modules[@]})"
