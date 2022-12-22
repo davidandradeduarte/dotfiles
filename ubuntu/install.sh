@@ -41,7 +41,7 @@ packages=(
     # fzf # couldn't get keybindings to work
     bat # batcat bin
     exa
-    fd-find # fdfind
+    fd-find # fdfind bin
     neofetch
 )
 
