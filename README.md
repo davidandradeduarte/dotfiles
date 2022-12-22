@@ -56,8 +56,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dotdot/HE
 Using environment variables:
 
 ```sh
-dir=$HOME/.dot shell=zsh yes=true \
-curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dotdot/HEAD/install | bash
+dir=$HOME/.dot shell=zsh yes=true bash <(curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dotdot/HEAD/install)
 ```
 
 *(booleans can be `true` or `1`)*
