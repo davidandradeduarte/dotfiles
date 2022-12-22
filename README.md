@@ -50,13 +50,15 @@ All flags are available as environment variables in their --`name` form.
 Using flags:
 
 ```sh
-bash <(curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dotdot/HEAD/install) -d $HOME/.dot -s zsh -y
+bash <(curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dotdot/HEAD/install) \
+    -d $HOME/.dot -s zsh -y
 ```
 
 Using environment variables:
 
 ```sh
-dir=$HOME/.dot shell=zsh yes=true bash <(curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dotdot/HEAD/install)
+dir=$HOME/.dot shell=zsh yes=true \
+    bash <(curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dotdot/HEAD/install)
 ```
 
 *(booleans can be `true` or `1`)*
