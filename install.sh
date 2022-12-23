@@ -180,7 +180,7 @@ if [ -d "$dir" ]; then
             fi
         else
             mv "$dir" "$dir.old.$epoch"
-            inf "Backuped old version to $(_g $dir.old.$epoch)"
+            inf "Backing up old version to $(_g $dir.old.$epoch)"
         fi
     fi
 fi

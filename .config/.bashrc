@@ -116,10 +116,37 @@ if ! shopt -oq posix; then
     fi
 fi
 
+# oh-my-bash
+export OSH=$HOME/.oh-my-bash
+OSH_THEME="font"
+OMB_USE_SUDO=true
+completions=(
+    git
+    composer
+    ssh
+)
+aliases=(
+    general
+)
+plugins=(
+    git
+    bashmarks
+)
+source $OSH/oh-my-bash.sh
+
 # Custom
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin:${KREW_ROOT:-$HOME/.krew}/bin:$HOME/.local/bin
 . "$HOME/.cargo/env"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 # eval "$(starship init bash)"
-eval $(thefuck --alias duck)
+case $(uname) in
+Darwin)
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    . /opt/homebrew/etc/profile.d/z.sh
+    ;;
+Linux)
+    . $HOME/z.sh
+    ;;
+esac
 . <(flux completion bash)
+eval "$(thefuck --alias duck)"

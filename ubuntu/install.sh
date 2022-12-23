@@ -81,6 +81,9 @@ echo \
     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
 
+inf "Adding $(_g fish) repository"
+sudo apt-add-repository -y ppa:fish-shell/release-3
+
 sudo apt update && sudo apt autoremove -y
 apt_packages=(
     bash
@@ -124,11 +127,19 @@ pip_packages=(
 inf "Installing pip packages $(_g ${pip_packages[@]})"
 pip3 install --user ${pip_packages[@]}
 
-inf "Installing $(_g oh-my-bash)"
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" --unattended
-
 inf "Installing $(_g oh-my-zsh)"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+if [ -d $HOME/.oh-my-zsh ]; then
+    warn "$(_y oh-my-zsh) already installed"
+else
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
+
+inf "Installing $(_g oh-my-bash)"
+if [ -d $HOME/.oh-my-bash ]; then
+    warn "$(_y oh-my-bash) already installed"
+else
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" --unattended
+fi
 
 inf "Installing $(_g pure)"
 mkdir -p "$HOME/.zsh"
@@ -140,7 +151,11 @@ rm -rf $HOME/powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/powerlevel10k
 
 inf "Installing $(_g oh-my-fish)"
-curl -L https://get.oh-my.fish | fish -c 'source - --noninteractive --yes'
+if [ -d $HOME/.local/share/omf ]; then
+    warn "$(_y oh-my-fish) already installed"
+else
+    curl -L https://get.oh-my.fish | fish -c 'source - --noninteractive --yes'
+fi
 
 inf "Installing $(_g fisher)"
 fish -c 'curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher'
@@ -355,6 +370,7 @@ inf "Creating symlinks"
 symlink $HOME/.gitconfig $dir/.config/.gitconfig
 symlink $HOME/.bashrc $dir/.config/.bashrc
 symlink $HOME/.zshrc $dir/.config/.zshrc
+symlink $HOME/.p10k.zsh $dir/.config/.p10k.zsh
 symlink $HOME/.config/fish/config.fish $dir/.config/config.fish
 symlink $HOME/.tmux.conf $dir/.config/.tmux.conf
 symlink $HOME/.config/nushell/config.nu $dir/.config/config.nu
@@ -362,6 +378,3 @@ symlink $HOME/.config/nushell/env.nu $dir/.config/env.nu
 symlink $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1 $dir/.config/Microsoft.PowerShell_profile.ps1
 symlink $HOME/.config/Code/User/settings.json $dir/.config/settings.json
 symlink $HOME/.config/Code/User/keybindings.json $dir/.config/keybindings.json
-
-inf "Adding $(_g $distro) specific config"
-echo -e "\n$(cat $dir/$distro/.config/.zshrc)" >>$HOME/.zshrc

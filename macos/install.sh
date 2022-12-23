@@ -9,6 +9,7 @@ else
     inf "Updating and upgrading $(_g homebrew)"
     brew update && brew upgrade
 fi
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 formulae=(
     util-linux
@@ -126,6 +127,27 @@ for module in ${go_modules[@]}; do
     /opt/homebrew/bin/go install $module
 done
 
+inf "Installing $(_g oh-my-zsh)"
+if [ -d $HOME/.oh-my-zsh ]; then
+    warn "$(_y oh-my-zsh) already installed"
+else
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
+
+inf "Installing $(_g oh-my-bash)"
+if [ -d $HOME/.oh-my-bash ]; then
+    warn "$(_y oh-my-bash) already installed"
+else
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" --unattended
+fi
+
+inf "Installing $(_g oh-my-fish)"
+if [ -d $HOME/.local/share/omf ]; then
+    warn "$(_y oh-my-fish) already installed"
+else
+    curl -L https://get.oh-my.fish | fish -c 'source - --noninteractive --yes'
+fi
+
 inf "Setting up $(_g vim)"
 curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 symlink $HOME/.vimrc $dir/.config/.vimrc
@@ -174,6 +196,7 @@ inf "Creating symlinks"
 symlink $HOME/.gitconfig $dir/.config/.gitconfig
 symlink $HOME/.bashrc $dir/.config/.bashrc
 symlink $HOME/.zshrc $dir/.config/.zshrc
+symlink $HOME/.p10k.zsh $dir/.config/.p10k.zsh
 symlink $HOME/.config/fish/config.fish $dir/.config/config.fish
 symlink $HOME/.tmux.conf $dir/.config/.tmux.conf
 symlink $HOME/.config/nushell/config.nu $dir/.config/config.nu
@@ -181,6 +204,3 @@ symlink $HOME/.config/nushell/env.nu $dir/.config/env.nu
 symlink $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1 $dir/.config/Microsoft.PowerShell_profile.ps1
 symlink "$HOME/Library/Application Support/Code/User/settings.json" $dir/.config/settings.json
 symlink "$HOME/Library/Application Support/Code/User/keybindings.json" $dir/.config/keybindings.json
-
-inf "Adding $(_g $distro) specific config"
-echo -e "\n$(cat $dir/$distro/.config/.zshrc)" >>$HOME/.zshrc
