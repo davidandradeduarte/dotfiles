@@ -136,7 +136,7 @@ inf "Installing $(_g oh-my-zsh)"
 if [ -d $HOME/.oh-my-zsh ]; then
     warn "$(_y oh-my-zsh) already installed"
 else
-    if [$yes = 1]; then
+    if [ "$yes" = 1 ]; then
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
     else
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -147,7 +147,7 @@ inf "Installing $(_g oh-my-bash)"
 if [ -d $HOME/.oh-my-bash ]; then
     warn "$(_y oh-my-bash) already installed"
 else
-    if [$yes = 1]; then
+    if [ "$yes" = 1 ]; then
         bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" --unattended
     else
         bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
