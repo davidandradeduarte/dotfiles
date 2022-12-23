@@ -8,6 +8,9 @@ Currently supports: macOS, Ubuntu, Fedora.
 
 Use at your own risk.
 
+![editor](.img/editor.png)
+![terminal](.img/terminal.png)
+
 Table of Contents
 -----------------
 
