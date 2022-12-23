@@ -209,9 +209,6 @@ wget https://raw.githubusercontent.com/rupa/z/master/z.sh -O $HOME/z.sh
 inf "Installing $(_g fzf)"
 if [ -d "$HOME/.fzf" ]; then
     warn "$(_y fzf) already installed"
-fi
-if [ -d $HOME/.oh-my-bash ]; then
-    warn "$(_y fzf) already installed"
 else
     git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
     yes | $HOME/.fzf/install
