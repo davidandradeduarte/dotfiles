@@ -5,9 +5,11 @@ set -e
 if [[ $arch != "aarch64" ]]; then
     if test ! $(which brew); then
         inf "Installing $(_g homebrew)"
-        if [ "$yes" = 1 ]; then NONINTERACTIVE=1; fi
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        NONINTERACTIVE=
+        if [ "$yes" = 1 ]; then
+            NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        else
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        fi
     else
         inf "Updating and upgrading $(_g homebrew)"
         brew update && brew upgrade
