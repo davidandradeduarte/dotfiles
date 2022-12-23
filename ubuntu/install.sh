@@ -5,7 +5,9 @@ set -e
 if [[ $arch != "aarch64" ]]; then
     if test ! $(which brew); then
         inf "Installing $(_g homebrew)"
-        $(if [ $yes == "1" ]; then echo "NONINTERACTIVE=1"; fi) /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        if [ "$yes" = 1 ]; then NONINTERACTIVE=1; fi
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        NONINTERACTIVE=
     else
         inf "Updating and upgrading $(_g homebrew)"
         brew update && brew upgrade
@@ -132,14 +134,22 @@ inf "Installing $(_g oh-my-zsh)"
 if [ -d $HOME/.oh-my-zsh ]; then
     warn "$(_y oh-my-zsh) already installed"
 else
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" $(if [ $yes ]; then echo "--unattended"; fi)
+    if [$yes = 1]; then
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    else
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    fi
 fi
 
 inf "Installing $(_g oh-my-bash)"
 if [ -d $HOME/.oh-my-bash ]; then
     warn "$(_y oh-my-bash) already installed"
 else
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" $(if [ $yes ]; then echo "--unattended"; fi)
+    if [$yes = 1]; then
+        bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" --unattended
+    else
+        bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+    fi
 fi
 
 inf "Installing $(_g pure)"
