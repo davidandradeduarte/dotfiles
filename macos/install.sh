@@ -76,10 +76,11 @@ formulae=(
     node
     watch
     fluxcd/tap/flux
+    kyoh86/tap/richgo
 )
 
 inf "Installing brew formulae $(_g ${formulae[@]})"
-brew install -v ${formulae[@]}
+brew install ${formulae[@]}
 
 casks=(
     # powershell
@@ -110,7 +111,7 @@ casks=(
     # vmware-fusion
 )
 inf "Installing brew casks $(_g ${casks[@]})"
-brew install -v --cask ${casks[@]}
+brew install --cask ${casks[@]}
 
 go_modules=(
     golang.org/x/tools/gopls@latest

@@ -19,7 +19,7 @@ if [[ $arch != "aarch64" ]]; then
         stern
     )
     inf "Installing brew formulae $(_g ${formulae[@]})"
-    brew install -v ${formulae[@]}
+    brew install ${formulae[@]}
 else
     warn "Skipping $(_y Homebrew) installation on $(_y $arch). Unsupported."
 fi
@@ -203,7 +203,6 @@ wget https://raw.githubusercontent.com/rupa/z/master/z.sh -O $HOME/z.sh
 inf "Installing $(_g fzf)"
 if [ -d "$HOME/.fzf" ]; then
     warn "$(_y fzf) already installed"
-    return
 fi
 git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
 yes | $HOME/.fzf/install
