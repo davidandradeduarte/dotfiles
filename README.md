@@ -14,18 +14,22 @@ Use at your own risk.
 Table of Contents
 -----------------
 
+* [Dependencies](#dependencies)
 * [Installation](#installation)
 * [Docker](#docker)
 * [Testing](#testing)
 * [License](#license)
 
-## Installation
+## Dependencies
 
-*Requires `bash`, `curl`, `git`.
+* [bash](https://www.gnu.org/software/bash/) (>= 4.0)
+* [curl](https://curl.haxx.se/)
+* [git](https://git-scm.com/)
+
+## Installation
 
 ```sh
 bash <(curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dotfiles/HEAD/install.sh)
-
 ```
 
 Alternatively, you can clone the repository and run the `install` script:
