@@ -108,6 +108,7 @@ All options are available as make variables and there's an extra `quiet` flag to
 Spin up a container with Ubuntu to test local changes:
 
 ```sh
+cd $HOME/.dotfiles # or wherever your changes are
 make ubuntu local=true
 ```
 
