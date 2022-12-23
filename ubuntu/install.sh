@@ -107,8 +107,8 @@ apt_packages=(
     jq
     xonsh
     elvish
-    code
     gh
+    code
     code-insiders
     nodejs
     docker-ce
@@ -207,8 +207,12 @@ inf "Installing $(_g fzf)"
 if [ -d "$HOME/.fzf" ]; then
     warn "$(_y fzf) already installed"
 fi
-git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
-yes | $HOME/.fzf/install
+if [ -d $HOME/.oh-my-bash ]; then
+    warn "$(_y oh-my-bash) already installed"
+else
+    git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+    yes | $HOME/.fzf/install
+fi
 
 inf "Installing $(_g sops)"
 sops_version=$(curl -s "https://api.github.com/repos/mozilla/sops/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v*([^"]+)".*/\1/')
