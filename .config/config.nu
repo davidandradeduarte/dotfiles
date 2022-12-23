@@ -647,6 +647,6 @@ let-env config = {
 }
 
 # Custom
-# mkdir ~/.cache/starship
+# mkdir -p ~/.cache/starship
 # starship init nu | save ~/.cache/starship/init.nu
 # source ~/.cache/starship/init.nu

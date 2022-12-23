@@ -174,7 +174,7 @@ if ! test $(which posh); then
     posh_arch=$(if [[ $arch == "aarch64" ]]; then echo "arm64"; else echo "amd64"; fi)
     sudo wget "https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-${posh_arch}" -O /usr/local/bin/oh-my-posh
     sudo chmod +x /usr/local/bin/oh-my-posh
-    mkdir $HOME/.poshthemes
+    mkdir -p $HOME/.poshthemes
     wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O $HOME/.poshthemes/themes.zip
     unzip -o $HOME/.poshthemes/themes.zip -d $HOME/.poshthemes
     chmod u+rw $HOME/.poshthemes/*.omp.*
