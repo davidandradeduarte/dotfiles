@@ -157,8 +157,8 @@ vim +'PlugInstall --sync' +qa
 code_extensions=(
     teabyii.ayu
     usernamehw.errorlens
-    iocave.customize-ui
-    iocave.monkey-patch
+    # iocave.customize-ui # causing vscode to crash
+    # iocave.monkey-patch # causing vscode to crash
     golang.go-nightly
     ms-dotnettools.csharp
     GitHub.copilot-nightly

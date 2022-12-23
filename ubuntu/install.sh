@@ -97,7 +97,6 @@ apt_packages=(
     nano
     tmux
     htop
-    fzf # couldn't get keybindings to work
     bat # batcat bin
     exa
     fd-find # fdfind bin
@@ -334,8 +333,8 @@ vim +'PlugInstall --sync' +qa
 code_extensions=(
     teabyii.ayu
     usernamehw.errorlens
-    iocave.customize-ui
-    iocave.monkey-patch
+    # iocave.customize-ui
+    # iocave.monkey-patch
     golang.go-nightly
     ms-dotnettools.csharp
     GitHub.copilot-nightly
