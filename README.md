@@ -9,7 +9,7 @@ Currently supports: macOS, Ubuntu.
 Use at your own risk.
 
 ![editor](.img/editor.png)
-![terminal](.img/terminal.png)
+More images [here](.img).
 
 Table of Contents
 -----------------
