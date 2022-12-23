@@ -34,8 +34,8 @@ formulae=(
     nushell
     starship
     oh-my-posh
-    # xonsh
-    # elvish
+    xonsh
+    elvish
     vim
     neovim
     nano
@@ -49,7 +49,6 @@ formulae=(
     fd
     go
     rustup-init
-    # rust
     neofetch
     k9s
     lazygit
@@ -87,21 +86,20 @@ inf "Installing brew formulae $(_g ${formulae[@]})"
 brew install ${formulae[@]}
 
 casks=(
-    # powershell
+    powershell
     visual-studio-code
-    # rider
-    # intellij-idea
-    # iterm2
-    # alacritty
-    # kitty
+    rider
+    intellij-idea
+    iterm2
+    alacritty
+    kitty
     google-chrome
     firefox
-    # brave-browser
+    brave-browser
     slack
     microsoft-teams
     zoom
-    # discord
-    # spotify
+    discord
     dotnet-sdk
     docker
     openvpn-connect
@@ -111,8 +109,8 @@ casks=(
     meetingbar
     caffeine
     # bitwarden # the brew version can't be used for browser integration
-    # balenaetcher
-    # vmware-fusion
+    balenaetcher
+    vmware-fusion
 )
 inf "Installing brew casks $(_g ${casks[@]})"
 brew install --cask ${casks[@]}

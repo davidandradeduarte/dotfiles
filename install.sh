@@ -126,11 +126,11 @@ symlink() {
     fi
     if [ -f "$2" ] && [ ! -L "$2" ] && [ ! "$(readlink "$2")" == "$1" ]; then
         inf "Backing up $(_g $2) to $(_g $2.bak.$epoch)"
-        mv "$2" "$2.bak.$epoch"
+        sudo mv "$2" "$2.bak.$epoch"
     fi
     if [ ! -e "$2" ]; then
-        mkdir -p "$(dirname "$2")"
-        touch "$2"
+        sudo mkdir -p "$(dirname "$2")"
+        sudo touch "$2"
     fi
     inf "Creating symbolic link from $(_g $1) to $(_g $2)"
     sudo ln -sf "$1" "$2"
