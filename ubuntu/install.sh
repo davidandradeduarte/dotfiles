@@ -244,7 +244,7 @@ if [ -d "/opt/kubectx" ]; then
 else
     sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
     symlink /opt/kubectx/kubectx /usr/local/bin/kubectx
-    symlink -s /opt/kubectx/kubens /usr/local/bin/kubens
+    symlink /opt/kubectx/kubens /usr/local/bin/kubens
     mkdir -p $HOME/.config/fish/completions
     symlink /opt/kubectx/completion/kubectx.fish $HOME/.config/fish/completions/
     symlink /opt/kubectx/completion/kubens.fish $HOME/.config/fish/completions/

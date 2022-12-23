@@ -16,6 +16,7 @@ Table of Contents
 
 * [Dependencies](#dependencies)
 * [Installation](#installation)
+* [Installation Notes](#installation-notes)
 * [Docker](#docker)
 * [Testing](#testing)
 * [License](#license)
@@ -69,6 +70,16 @@ dir=$HOME/.dot shell=zsh yes=true \
 ```
 
 (booleans can be `true` or `1`)
+
+## Installation Notes
+
+Installation is *batteries included*, which means it installs everything by default. It can even install stuff I no longer use but haven't had time to clean yet.
+There is no configuration for what is installed, it's all or nothing.
+Of course you can always clone the repository and remove what you don't want.
+
+The script will always try to pull the latest software available (except in some rare cases), so you can run the script as many times as you want to keep your system up to date.
+
+If by any chance the script replaces a file that you have modified, you can probably find it in the same directory with a `.bak.$epoch` extension. (e.g. `~/.bashrc.bak.1620000000`)
 
 ## Docker
 
