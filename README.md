@@ -21,6 +21,8 @@ Table of Contents
 
 ## Installation
 
+Dependencies: `bash`, `curl` and `git`.
+
 ```sh
 bash <(curl -fsSL https://raw.githubusercontent.com/davidandradeduarte/dotfiles/HEAD/install.sh)
 
