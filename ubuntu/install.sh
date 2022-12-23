@@ -77,6 +77,7 @@ curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash -
 
 inf "Adding $(_g docker) repository"
 sudo mkdir -p /etc/apt/keyrings
+rm -f /etc/apt/keyrings/docker.gpg
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 echo \
     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
@@ -144,8 +145,12 @@ fi
 
 inf "Installing $(_g pure)"
 mkdir -p "$HOME/.zsh"
-git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
-fpath+=($HOME/.zsh/pure)
+if [ -d "$HOME/.zsh/pure" ]; then
+    warn "$(_y pure) already installed"
+else
+    git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+    fpath+=($HOME/.zsh/pure)
+fi
 
 inf "Installing $(_g powerlevel10k)"
 rm -rf $HOME/powerlevel10k
