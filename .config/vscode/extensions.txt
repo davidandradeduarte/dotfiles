@@ -1,0 +1,18 @@
+teabyii.ayu
+usernamehw.errorlens
+rust-lang.rust-analyzer
+golang.go-nightly
+ms-dotnettools.csharp
+# iocave.customize-ui
+# iocave.monkey-patch
+GitHub.copilot-nightly
+groogle.termin-all-or-nothing
+donjayamanne.githistory
+vscodevim.vim
+skyapps.fish-vscode
+redhat.vscode-yaml
+ms-vscode.makefile-tools
+hashicorp.terraform
+hashicorp.hcl
+DavidAnson.vscode-markdownlint
+alexkrechik.cucumberautocomplete

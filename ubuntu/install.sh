@@ -337,30 +337,19 @@ curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubuserconte
 symlink $dir/.config/.vimrc $HOME/.vimrc
 vim +'PlugInstall --sync' +qa
 
-code_extensions=(
-    teabyii.ayu
-    usernamehw.errorlens
-    # iocave.customize-ui
-    # iocave.monkey-patch
-    golang.go-nightly
-    ms-dotnettools.csharp
-    GitHub.copilot-nightly
-    groogle.termin-all-or-nothing
-    donjayamanne.githistory
-    vscodevim.vim
-    skyapps.fish-vscode
-    redhat.vscode-yaml
-    ms-vscode.makefile-tools
-    hashicorp.terraform
-    hashicorp.hcl
-    DavidAnson.vscode-markdownlint
-    alexkrechik.cucumberautocomplete
-)
+code_extensions=()
+while IFS= read -r line; do
+    if [[ $line == \#* ]]; then
+        continue
+    fi
+    code_extensions+=("$line")
+done <$dir/.config/vscode/extensions.txt
 inf "Installing vscode extensions $(_g ${code_extensions[@]})"
 for extension in ${code_extensions[@]}; do
     inf "Installing vscode extension $(_g $extension)"
     code --install-extension $extension
 done
+code --disable-extension vscodevim.vim
 
 inf "Installing font $(_g FiraCode)"
 curl -fLo $HOME/.local/share/fonts/FiraCode.zip --create-dirs "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraCode.zip"
@@ -387,5 +376,5 @@ symlink $dir/.config/.tmux.conf $HOME/.tmux.conf
 symlink $dir/.config/config.nu $HOME/.config/nushell/config.nu
 symlink $dir/.config/env.nu $HOME/.config/nushell/env.nu
 symlink $dir/.config/Microsoft.PowerShell_profile.ps1 $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1
-symlink $dir/.config/settings.json $HOME/.config/Code/User/settings.json
-symlink $dir/.config/keybindings.json $HOME/.config/Code/User/keybindings.json
+symlink $dir/.config/vscode/settings.json $HOME/.config/Code/User/settings.json
+symlink $dir/.config/vscode/keybindings.json $HOME/.config/Code/User/keybindings.json
