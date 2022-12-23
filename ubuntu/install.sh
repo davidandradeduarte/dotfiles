@@ -178,7 +178,7 @@ fi
 
 inf "Installing $(_g powershell)"
 pwsh_version=$(curl -s https://api.github.com/repos/PowerShell/PowerShell/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
-pwsh_arch=$(if [[ $arch == "aarch64" ]]; then echo "arm64"; else echo "amd64"; fi)
+pwsh_arch=$(if [[ $arch == "aarch64" ]]; then echo "arm64"; else echo "x64"; fi)
 pwsh_version=${pwsh_version:1}
 sudo wget "https://github.com/PowerShell/PowerShell/releases/download/v${pwsh_version}/powershell-${pwsh_version}-linux-${pwsh_arch}.tar.gz" -O /tmp/powershell.tar.gz
 sudo mkdir -p /opt/microsoft/powershell/${pwsh_version}
