@@ -172,15 +172,15 @@ if [ -d "$dir" ]; then
             read -p " [y/N] " -n 1 -r
             echo
             if [[ $REPLY =~ ^[Yy]$ ]]; then
-                inf "Backing up $(_g $dir) to $(_g $dir.old.$epoch)"
-                mv "$dir" "$dir.old.$epoch"
+                inf "Backing up $(_g $dir) to $(_g $dir.bak.$epoch)"
+                mv "$dir" "$dir.bak.$epoch"
             else
                 err "Aborted"
                 exit 1
             fi
         else
-            mv "$dir" "$dir.old.$epoch"
-            inf "Backing up old version to $(_g $dir.old.$epoch)"
+            mv "$dir" "$dir.bak.$epoch"
+            inf "Backing up old version to $(_g $dir.obakld.$epoch)"
         fi
     fi
 fi

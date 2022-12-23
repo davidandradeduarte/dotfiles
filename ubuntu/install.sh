@@ -14,8 +14,8 @@ if [[ $arch != "aarch64" ]]; then
     formulae=(
         k9s
         nushell
-        andedobbeleer/oh-my-posh/oh-my-posh
-        rs/tap/curlie
+        oh-my-posh
+        curlie
         stern
     )
     inf "Installing brew formulae $(_g ${formulae[@]})"
