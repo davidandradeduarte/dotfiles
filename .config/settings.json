@@ -1,0 +1,348 @@
+{
+    "workbench.editor.untitled.hint": "hidden",
+    "editor.cursorStyle": "block",
+    "telemetry.telemetryLevel": "off",
+    "security.workspace.trust.banner": "never",
+    "security.workspace.trust.enabled": false,
+    "security.workspace.trust.startupPrompt": "never",
+    "window.titleBarStyle": "native",
+    "files.autoSave": "afterDelay",
+    // "terminal.integrated.macOptionIsMeta": true, // this make alt+c work on fzf, but breaks alt+shift symbnols (e.g {})
+    "editor.folding": false,
+    "editor.glyphMargin": false,
+    "editor.rulers": [
+        140
+    ],
+    "editor.overviewRulerBorder": true,
+    "window.nativeFullScreen": false,
+    "editor.tabSize": 4,
+    "keyboard.dispatch": "keyCode",
+    "terminal.integrated.profiles.osx": {
+        // "bash": {
+        //     "path": "bash",
+        //     "args": [
+        //         "-l"
+        //     ],
+        //     "icon": "terminal-bash"
+        // },
+        // "zsh": {
+        //     "path": "zsh",
+        //     "args": [
+        //         "-l"
+        //     ]
+        // },
+        // "fish": {
+        //     "path": "fish",
+        //     "args": [
+        //         "-l"
+        //     ]
+        // },
+        // "pwsh": {
+        //     "path": "pwsh",
+        //     "icon": "terminal-powershell"
+        // },
+        "tmux": {
+            "path": "tmux",
+            "icon": "terminal-tmux",
+        },
+    },
+    "terminal.integrated.defaultProfile.osx": "tmux",
+    // "workbench.colorCustomizations": {
+    //     "editor.background": "#101010",
+    //     "activityBar.background": "#000000c4",
+    //     // "statusBar.foreground": "#ffaa33",
+    //     "terminal.background": "#101010",
+    //     "statusBar.background": "#000000c4",
+    //     "panel.background": "#000000c4",
+    //     "sideBar.background": "#000000c4",
+    //     "titleBar.activeBackground": "#000000",
+    //     "editorGroupHeader.tabsBackground": "#000000",
+    //     "editorGroupHeader.noTabsBackground": "#000000",
+    //     "tab.activeBorderTop": "#ffaa33",
+    //     "tab.border": "#000000",
+    //     "tab.inactiveBackground": "#000000",
+    //     "statusBar.noFolderBackground": "#000000c4",
+    //     // "statusBar.foreground": "#ffffff",
+    //     "editorLineNumber.activeForeground": "#ffaa33",
+    //     "gitDecoration.modifiedResourceForeground": "#f2d601",
+    //     "editorLineNumber.foreground": "#222222",
+    //     // "list.inactiveSelectionForeground": "#000000",
+    //     "editorRuler.foreground": "#ffaa3326",
+    //     // "editor.lineHighlightBackground": "#ff0000",
+    //     // terminal colors
+    //     // "terminal.ansiBlack": "#000000",
+    //     // "terminal.ansiBrightBlack": "#666666",
+    //     // "terminal.ansiRed": "#990000",
+    //     // "terminal.ansiBrightRed": "#E50000",
+    //     // "terminal.ansiGreen": "#00A600",
+    //     // "terminal.ansiBrightGreen": "#00D900",
+    //     // "terminal.ansiYellow": "#999900",
+    //     // "terminal.ansiBrightYellow": "#E5E500",
+    //     // "terminal.ansiBlue": "#0000B2",
+    //     // "terminal.ansiBrightBlue": "#0000FF",
+    //     // "terminal.ansiMagenta": "#B200B2",
+    //     // "terminal.ansiBrightMagenta": "#E500E5",
+    //     // "terminal.ansiCyan": "#00A6B2",
+    //     // "terminal.ansiBrightCyan": "#00E5E5",
+    //     // "terminal.ansiWhite": "#BFBFBF",
+    //     // "terminal.ansiBrightWhite": "#E5E5E5",
+    //     // "terminalCursor.foreground": "#8B8B8B",
+    //     // "terminal.foreground": "#FFFFFF",
+    //     // "terminal.selectionBackground": "#314F78",
+    //     // "terminal.background" : "#000000",
+    //     //tmp
+    //     // "terminal.ansiBlack": "#1E2127",
+    //     // "terminal.ansiBrightBlack": "#5C6370",
+    //     // "terminal.ansiRed": "#E06C75",
+    //     // "terminal.ansiBrightRed": "#E06C75",
+    //     // "terminal.ansiGreen": "#98C379",
+    //     // "terminal.ansiBrightGreen": "#98C379",
+    //     // "terminal.ansiYellow": "#D19A66",
+    //     // "terminal.ansiBrightYellow": "#D19A66",
+    //     // "terminal.ansiBlue": "#61AFEF",
+    //     // "terminal.ansiBrightBlue": "#61AFEF",
+    //     // "terminal.ansiMagenta": "#C678DD",
+    //     // "terminal.ansiBrightMagenta": "#C678DD",
+    //     // "terminal.ansiCyan": "#56B6C2",
+    //     // "terminal.ansiBrightCyan": "#56B6C2",
+    //     // "terminal.ansiWhite": "#ABB2BF",
+    //     // "terminal.ansiBrightWhite": "#FFFFFF",
+    //     // "terminalCursor.foreground": "#5C6370",
+    //     // "terminal.foreground": "#ABB2BF",
+    //     // "terminal.selectionBackground": "#3A3F4B",
+    //     // "terminal.background" : "#1E2127"
+    // },
+    "workbench.colorCustomizations": {
+        "editor.selectionBackground": "#ffaa3383",
+        "editor.selectionHighlightBackground": "#ffaa3325",
+        "editor.background": "#101010",
+        "activityBar.background": "#000000c4",
+        "terminal.background": "#101010",
+        "statusBar.background": "#000000c4",
+        "panel.background": "#000000c4",
+        "sideBar.background": "#000000c4",
+        "titleBar.activeBackground": "#000000",
+        "editorGroupHeader.tabsBackground": "#000000",
+        "editorGroupHeader.noTabsBackground": "#000000",
+        "list.activeSelectionBackground": "#e1ad6588",
+        "list.inactiveSelectionBackground": "#e1ad658a",
+        "list.activeSelectionForeground": "#ffffff",
+        "list.inactiveSelectionForeground": "#ffffff",
+        "tab.activeBorderTop": "#ffaa33",
+        "tab.border": "#000000",
+        "tab.inactiveBackground": "#000000",
+        "statusBar.noFolderBackground": "#000000c4",
+        "editorLineNumber.activeForeground": "#ffaa33",
+        "gitDecoration.modifiedResourceForeground": "#f2d601",
+        "editorLineNumber.foreground": "#3f3f3f",
+        "editorRuler.foreground": "#ffaa3326",
+        "statusBar.debuggingBackground": "#000000c4",
+        "statusBar.debuggingForeground": "#ffaa33",
+        // "statusBar.foreground": "#222222",
+        "editor.findMatchBackground": "#101010",
+        "editor.findMatchBorder": "#ffaa33",
+        "editor.findMatchHighlightBackground": "#101010",
+        "editor.findMatchHighlightBorder": "#ffffff",
+        "searchEditor.findMatchBackground": "#101010",
+        "searchEditor.findMatchBorder": "#ffffff",
+        "editorInlayHint.background": "#101010",
+        "editorInlayHint.foreground": "#797979",
+        "foreground": "#ffffff"
+    },
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            // {
+            //     "scope": "string",
+            //     "settings": {
+            //         "foreground": "#ebc687"
+            //     }
+            // },
+            // {
+            //     "scope": "comment",
+            //     "settings": {
+            //         "foreground": "#ebc687"
+            //     }
+            // },
+            // {
+            //     "scope": "keyword",
+            //     "settings": {
+            //         "foreground": "#ecd843"
+            //     }
+            // },
+            // {
+            //     "scope": "keyword.operator",
+            //     "settings": {
+            //         "foreground": "#53d015"
+            //     }
+            // },
+            // {
+            //     "scope": "keyword.control",
+            //     "settings": {
+            //         "foreground": "#be893f"
+            //     }
+            // },
+            // {
+            //     "scope": "variable",
+            //     "settings": {
+            //         "foreground": "#3c9274"
+            //     }
+            // },
+            // {
+            //     "scope": "entity.name.function",
+            //     "settings": {
+            //         "foreground": "#ffaa33"
+            //     }
+            // },
+            // {
+            //     "scope": "punctuation",
+            //     "settings": {
+            //         "foreground": "#ffffff"
+            //     }
+            // },
+        ]
+    },
+    "workbench.editor.tabCloseButton": "off",
+    "editor.minimap.maxColumn": 30,
+    "editor.minimap.enabled": false,
+    "extensions.ignoreRecommendations": true,
+    "go.toolsManagement.autoUpdate": true,
+    "workbench.layoutControl.enabled": false,
+    "editor.fontFamily": "'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace",
+    "workbench.iconTheme": null,
+    "customizeUI.titleBar": "frameless",
+    "customizeUI.font.monospace": "JetBrains Mono",
+    "customizeUI.font.regular": "JetBrains Mono",
+    "customizeUI.fontSizeMap": {
+        "13px": "12px",
+        "monospace": "12px"
+    },
+    "customizeUI.activityBarHideSettings": true,
+    "workbench.panel.opensMaximized": "always",
+    "editor.inlineSuggest.enabled": true,
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": true,
+        "plaintext": false,
+        "markdown": false
+    },
+    "terminal.integrated.environmentChangesIndicator": "off",
+    "editor.formatOnSave": true,
+    "editor.suggestSelection": "first",
+    // "vim.statusBarColorControl": true,
+    // "vim.statusBarColors.insert": [
+    //     "#ffaa33",
+    //     "#000000c4"
+    // ],
+    // "vim.statusBarColors.normal": [
+    //     "#000000c4",
+    //     "#ffaa33"
+    // ],
+    // "vim.statusBarColors.visual": [
+    //     "#000000c4",
+    //     "#ffaa33"
+    // ],
+    // "vim.statusBarColors.visualline": [
+    //     "#000000c4",
+    //     "#ffaa33"
+    // ],
+    // "vim.statusBarColors.commandlineinprogress": [
+    //     "#000000c4",
+    //     "#ffaa33"
+    // ],
+    // "vim.statusBarColors.visualblock": [
+    //     "#000000c4",
+    //     "#ffaa33"
+    // ],
+    // "vim.statusBarColors.easymotioninputmode": [
+    //     "#000000c4",
+    //     "#ffaa33"
+    // ],
+    // "vim.statusBarColors.easymotionmode": [
+    //     "#000000c4",
+    //     "#ffaa33"
+    // ],
+    // "vim.statusBarColors.replace": [
+    //     "#000000c4",
+    //     "#ffaa33"
+    // ],
+    // "vim.statusBarColors.searchinprogressmode": [
+    //     "#000000c4",
+    //     "#ffaa33"
+    // ],
+    // "vim.statusBarColors.surroundinputmode": [
+    //     "#000000c4",
+    //     "#ffaa33"
+    // ],
+    "search.quickOpen.includeHistory": false,
+    "files.hotExit": "off",
+    "terminal.integrated.persistentSessionReviveProcess": "never",
+    "terminal.integrated.enablePersistentSessions": false,
+    "workbench.editor.restoreViewState": false,
+    "window.newWindowDimensions": "maximized",
+    "workbench.startupEditor": "none",
+    "workbench.editor.showTabs": true,
+    "workbench.editor.tabSizing": "shrink",
+    // "editor.inlayHints.padding": true,
+    // "go.inlayHints.parameterNames": true,
+    // "go.inlayHints.assignVariableTypes": true,
+    // "go.inlayHints.compositeLiteralFields": true,
+    // "go.inlayHints.compositeLiteralTypes": true,
+    // "go.inlayHints.constantValues": true,
+    // "go.inlayHints.functionTypeParameters": true,
+    // "go.inlayHints.rangeVariableTypes": true,
+    // "csharp.inlayHints.parameters.enabled": true,
+    // "csharp.inlayHints.parameters.forIndexerParameters": true,
+    // "csharp.inlayHints.parameters.forLiteralParameters": true,
+    // "csharp.inlayHints.parameters.forOtherParameters": true,
+    // "csharp.inlayHints.parameters.forObjectCreationParameters": true,
+    // "csharp.inlayHints.parameters.suppressForParametersThatDifferOnlyBySuffix": true,
+    // "csharp.inlayHints.parameters.suppressForParametersThatMatchArgumentName": true,
+    // "csharp.inlayHints.parameters.suppressForParametersThatMatchMethodIntent": true,
+    // "csharp.inlayHints.types.enabled": true,
+    // "csharp.inlayHints.types.forImplicitVariableTypes": true,
+    // "csharp.inlayHints.types.forImplicitObjectCreation": true,
+    // "csharp.inlayHints.types.forLambdaParameterTypes": true,
+    "editor.guides.bracketPairs": "active",
+    "editor.bracketPairColorization.enabled": false,
+    "editor.guides.highlightActiveBracketPair": false, // todo: not sure if better on or off
+    "workbench.tips.enabled": false,
+    "diffEditor.renderSideBySide": false,
+    "editor.renderWhitespace": "none",
+    "editor.inlayHints.fontSize": 9,
+    "vim.searchMatchColor": "#ffaa33",
+    "vim.searchMatchTextColor": "#000000c4",
+    "vim.searchHighlightColor": "#ffaa33",
+    "vim.searchHighlightTextColor": "#000000c4",
+    "gitHistory.includeRemoteBranches": true,
+    "gitHistory.hideCommitViewExplorer": true,
+    "gitHistory.showEditorTitleMenuBarIcons": false,
+    "git.terminalAuthentication": false,
+    "github.gitAuthentication": false,
+    "explorer.confirmDelete": false, // this is a workaround because we can't change tab font size
+    "editor.fontSize": 15,
+    "terminal.integrated.fontSize": 15,
+    // "window.zoomLevel": 1,
+    "settings.cycle": [
+        {
+            "id": "lineNumbers",
+            "values": [
+                {
+                    "editor.lineNumbers": "off",
+                    "editor.folding": false,
+                    "editor.glyphMargin": false
+                },
+                {
+                    "editor.lineNumbers": "on",
+                    // "editor.folding": true,
+                    // "editor.glyphMargin": true
+                }
+            ]
+        }
+    ],
+    "editor.lineNumbers": "off",
+    "breadcrumbs.enabled": false,
+    "workbench.sideBar.location": "right",
+    "workbench.colorTheme": "Ayu Dark Bordered",
+    "workbench.activityBar.visible": false,
+    // "workbench.editor.labelFormat": "medium"
+}

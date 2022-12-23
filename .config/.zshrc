@@ -2,7 +2,8 @@
 
 autoload -Uz promptinit
 promptinit
-prompt adam1
+# prompt adam1
+prompt pure
 
 setopt histignorealldups sharehistory
 
@@ -37,6 +38,9 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # Custom
-export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin:${KREW_ROOT:-$HOME/.krew}/bin
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin:${KREW_ROOT:-$HOME/.krew}/bin:$HOME/.local/bin
 . "$HOME/.cargo/env"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# eval "$(starship init zsh)"
+eval $(thefuck --alias duck)
+command -v flux >/dev/null && . <(flux completion zsh)

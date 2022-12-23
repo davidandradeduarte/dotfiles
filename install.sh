@@ -122,6 +122,10 @@ symlink() {
         inf "Backing up $(_g $1) to $(_g $1.bak.$epoch)"
         mv "$1" "$1.bak.$epoch"
     fi
+    if [ ! -e "$1" ]; then
+        mkdir -p "$(dirname "$1")"
+        touch "$1"
+    fi
     if [ ! -e "$2" ]; then
         err "File $(_r $2) doesn't exist"
         exit 1
@@ -225,6 +229,7 @@ if [ -f /.dockerenv ]; then
         rm -rf "/tmp/.dotfiles"
     fi
     sudo rm -f "/tmp/entrypoint.sh"
+    find ~ -name "*.bak.*" -type f -delete
 fi
 
 inf "Launching shell $(_g $shell)"

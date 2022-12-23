@@ -15,3 +15,7 @@ co = checkout
 cb = checkout -b
 fp = !git fetch && git pull --no-rebase
 alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+
+# Go modules on Azure DevOps
+[url "git@ssh.dev.azure.com:v3"]
+insteadOf = https://dev.azure.com

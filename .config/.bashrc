@@ -117,6 +117,9 @@ if ! shopt -oq posix; then
 fi
 
 # Custom
-export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin:${KREW_ROOT:-$HOME/.krew}/bin
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin:${KREW_ROOT:-$HOME/.krew}/bin:$HOME/.local/bin
 . "$HOME/.cargo/env"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# eval "$(starship init bash)"
+eval $(thefuck --alias duck)
+. <(flux completion bash)
