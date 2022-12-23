@@ -136,6 +136,7 @@ git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 fpath+=($HOME/.zsh/pure)
 
 inf "Installing $(_g powerlevel10k)"
+rm -rf $HOME/powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/powerlevel10k
 
 inf "Installing $(_g oh-my-fish)"
@@ -154,7 +155,7 @@ if ! test $(which posh); then
     sudo chmod +x /usr/local/bin/oh-my-posh
     mkdir $HOME/.poshthemes
     wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O $HOME/.poshthemes/themes.zip
-    unzip $HOME/.poshthemes/themes.zip -d $HOME/.poshthemes
+    unzip -o $HOME/.poshthemes/themes.zip -d $HOME/.poshthemes
     chmod u+rw $HOME/.poshthemes/*.omp.*
     rm $HOME/.poshthemes/themes.zip
 fi
@@ -171,10 +172,14 @@ sudo ln -s /opt/microsoft/powershell/${pwsh_version}/pwsh /usr/bin/pwsh
 sudo rm /tmp/powershell.tar.gz
 
 inf "Setting up $(_g docker)"
-sudo systemctl enable docker.service
-sudo systemctl enable containerd.service
-sudo systemctl start docker.service
-sudo systemctl start containerd.service
+if [ -z "$(pidof systemd)" ]; then
+    warn "$(_y docker) requires systemd to be installed"
+else
+    sudo systemctl enable docker.service
+    sudo systemctl enable containerd.service
+    sudo systemctl start docker.service
+    sudo systemctl start containerd.service
+fi
 
 inf "Installing $(_g z)"
 wget https://raw.githubusercontent.com/rupa/z/master/z.sh -O $HOME/z.sh
@@ -211,7 +216,7 @@ inf "Installing $(_g terraform)"
 tf_version=$(curl -s "https://api.github.com/repos/hashicorp/terraform/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v*([^"]+)".*/\1/')
 tf_arch=$(if [[ $arch == "aarch64" ]]; then echo "arm64"; else echo "amd64"; fi)
 curl -Lo terraform.zip "https://releases.hashicorp.com/terraform/${tf_version}/terraform_${tf_version}_linux_${tf_arch}.zip"
-sudo unzip terraform.zip -d /usr/local/bin
+sudo unzip -o terraform.zip -d /usr/local/bin
 rm -f terraform.zip
 
 inf "Installing $(_g terragrunt)"
@@ -289,7 +294,7 @@ inf "Installing $(_g kubelogin)"
 kubelg_version=$(curl -s "https://api.github.com/repos/Azure/kubelogin/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v*([^"]+)".*/\1/')
 kubelg_arch=$(if [[ $arch == "aarch64" ]]; then echo "arm64"; else echo "amd64"; fi)
 wget "https://github.com/Azure/kubelogin/releases/download/v${kubelg_version}/kubelogin-linux-${kubelg_arch}.zip" -O /tmp/kubelogin.zip
-unzip /tmp/kubelogin.zip -d /tmp
+unzip -o /tmp/kubelogin.zip -d /tmp
 sudo mv /tmp/bin/linux_${kubelg_arch}/kubelogin /usr/local/bin/
 rm -rf /tmp/bin /tmp/kubelogin.zip
 
@@ -333,11 +338,11 @@ done
 
 inf "Installing font $(_g FiraCode)"
 curl -fLo $HOME/.local/share/fonts/FiraCode.zip --create-dirs "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraCode.zip"
-unzip $HOME/.local/share/fonts/FiraCode.zip -d $HOME/.local/share/fonts
+unzip -o $HOME/.local/share/fonts/FiraCode.zip -d $HOME/.local/share/fonts
 rm -f $HOME/.local/share/fonts/FiraCode.zip
 inf "Installing font $(_g JetBrainsMono)"
 curl -fLo $HOME/.local/share/fonts/JetBrainsMono.zip --create-dirs "https://download.jetbrains.com/fonts/JetBrainsMono-2.242.zip"
-unzip $HOME/.local/share/fonts/JetBrainsMono.zip -d $HOME/.local/share/fonts
+unzip -o $HOME/.local/share/fonts/JetBrainsMono.zip -d $HOME/.local/share/fonts
 rm -f $HOME/.local/share/fonts/JetBrainsMono.zip
 inf "Installing font $(_g Meslo Nerd Font patched for Powerlevel10k)"
 wget -qO "$HOME/.local/share/fonts/MesloLGS NF Regular.ttf" "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf"

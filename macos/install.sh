@@ -111,8 +111,20 @@ casks=(
 inf "Installing brew casks $(_g ${casks[@]})"
 brew install -v --cask ${casks[@]}
 
-inf "Installing $(_g powerlevel10k)"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+go_modules=(
+    golang.org/x/tools/gopls@latest
+    golang.org/x/tools/cmd/goimports@latest
+)
+inf "Installing go modules $(_g ${go_modules[@]})"
+for module in ${go_modules[@]}; do
+    go_bin=$(echo $module | rev | cut -d '/' -f1 | rev | cut -d '@' -f1)
+    if [ command -v $go_bin ] &>/dev/null; then
+        warn "$(_y $go_bin) already installed"
+        continue
+    fi
+    inf "Installing go module $(_g $module)"
+    /opt/homebrew/bin/go install $module
+done
 
 inf "Setting up $(_g vim)"
 curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -146,11 +158,11 @@ done
 
 inf "Installing font $(_g FiraCode)"
 curl -fLo $HOME/Library/Fonts/FiraCode.zip "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraCode.zip"
-unzip $HOME/Library/Fonts/FiraCode.zip -d $HOME/Library/Fonts
+unzip -o $HOME/Library/Fonts/FiraCode.zip -d $HOME/Library/Fonts
 rm $HOME/Library/Fonts/FiraCode.zip
 inf "Installing font $(_g JetBrainsMono)"
 curl -fLo $HOME/Library/Fonts/JetBrainsMono.zip "https://download.jetbrains.com/fonts/JetBrainsMono-2.242.zip"
-unzip $HOME/Library/Fonts/JetBrainsMono.zip -d $HOME/Library/Fonts
+unzip -o $HOME/Library/Fonts/JetBrainsMono.zip -d $HOME/Library/Fonts
 rm $HOME/Library/Fonts/JetBrainsMono.zip
 inf "Installing font $(_g Meslo Nerd Font patched for Powerlevel10k)"
 wget -qO "$HOME/Library/Fonts/MesloLGS NF Regular.ttf" "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf"
@@ -167,7 +179,6 @@ symlink $HOME/.tmux.conf $dir/.config/.tmux.conf
 symlink $HOME/.config/nushell/config.nu $dir/.config/config.nu
 symlink $HOME/.config/nushell/env.nu $dir/.config/env.nu
 symlink $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1 $dir/.config/Microsoft.PowerShell_profile.ps1
-symlink $HOME/.config/starship.toml $dir/.config/starship.toml
 symlink "$HOME/Library/Application Support/Code/User/settings.json" $dir/.config/settings.json
 symlink "$HOME/Library/Application Support/Code/User/keybindings.json" $dir/.config/keybindings.json
 

@@ -13,6 +13,54 @@ os=$(uname -s | tr '[:upper:]' '[:lower:]')
 arch=$(uname -m | tr '[:upper:]' '[:lower:]')
 distro=$(if [ "$os" == "linux" ]; then cat /etc/os-release | grep "^ID=" | cut -d "=" -f 2; else echo "macos"; fi)
 
+inf() {
+    if [ "$1" == "-n" ]; then
+        command echo -ne "${cg}Info: ${cn}$2"
+    else
+        command echo -e "${cg}Info: ${cn}$1"
+    fi
+}
+
+warn() {
+    if [ "$1" == "-n" ]; then
+        command echo -ne "${cy}Warning: ${cn}$2"
+    else
+        command echo -e "${cy}Warning: ${cn}$1"
+    fi
+}
+
+err() {
+    if [ "$1" == "-n" ]; then
+        command echo -ne "${cr}Error: ${cn}$2"
+    else
+        command echo -e "${cr}Error: ${cn}$1"
+    fi
+}
+
+dbg() {
+    if [ "$1" == "-n" ]; then
+        command echo -ne "${cd}Debug: ${cn}$2"
+    else
+        command echo -e "${cd}Debug: ${cn}$1"
+    fi
+}
+
+_g() {
+    echo -e "${cg}$@${cn}"
+}
+
+_y() {
+    echo -e "${cy}$1${cn}"
+}
+
+_r() {
+    echo -e "${cr}$1${cn}"
+}
+
+_c() {
+    echo -e "${cd}$1${cn}"
+}
+
 dir=${dir:-$HOME/.dotfiles}
 shell=${shell:-$SHELL}
 yes=${yes:-0}
@@ -69,54 +117,6 @@ while [[ $# -gt 0 ]]; do
     shift
 done
 
-inf() {
-    if [ "$1" == "-n" ]; then
-        command echo -ne "${cg}Info: ${cn}$2"
-    else
-        command echo -e "${cg}Info: ${cn}$1"
-    fi
-}
-
-warn() {
-    if [ "$1" == "-n" ]; then
-        command echo -ne "${cy}Warning: ${cn}$2"
-    else
-        command echo -e "${cy}Warning: ${cn}$1"
-    fi
-}
-
-err() {
-    if [ "$1" == "-n" ]; then
-        command echo -ne "${cr}Error: ${cn}$2"
-    else
-        command echo -e "${cr}Error: ${cn}$1"
-    fi
-}
-
-dbg() {
-    if [ "$1" == "-n" ]; then
-        command echo -ne "${cd}Debug: ${cn}$2"
-    else
-        command echo -e "${cd}Debug: ${cn}$1"
-    fi
-}
-
-_g() {
-    echo -e "${cg}$@${cn}"
-}
-
-_y() {
-    echo -e "${cy}$1${cn}"
-}
-
-_r() {
-    echo -e "${cr}$1${cn}"
-}
-
-_c() {
-    echo -e "${cd}$1${cn}"
-}
-
 symlink() {
     if [ -f "$1" ] && [ ! -L "$1" ] && [ ! "$(readlink "$1")" == "$2" ]; then
         inf "Backing up $(_g $1) to $(_g $1.bak.$epoch)"
@@ -168,7 +168,7 @@ done 2>/dev/null &
 if [ -d "$dir" ]; then
     if [ "$(ls -A $dir)" ]; then
         if [ $yes -eq 0 ]; then
-            warn -n "Directory $(_y $dir) is not empty.\nDo you want to overwrite and backup?"
+            warn -n "Directory $(_y $dir) is not empty.\nDo you want to backup and overwrite it?"
             read -p " [y/N] " -n 1 -r
             echo
             if [[ $REPLY =~ ^[Yy]$ ]]; then
