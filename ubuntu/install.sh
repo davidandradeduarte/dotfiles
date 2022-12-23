@@ -152,8 +152,11 @@ else
 fi
 
 inf "Installing $(_g powerlevel10k)"
-rm -rf $HOME/powerlevel10k
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/powerlevel10k
+if [ -d $HOME/powerlevel10k ]; then
+    warn "$(_y powerlevel10k) already installed"
+else
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/powerlevel10k
+fi
 
 inf "Installing $(_g oh-my-fish)"
 if [ -d $HOME/.local/share/omf ]; then
@@ -208,7 +211,7 @@ if [ -d "$HOME/.fzf" ]; then
     warn "$(_y fzf) already installed"
 fi
 if [ -d $HOME/.oh-my-bash ]; then
-    warn "$(_y oh-my-bash) already installed"
+    warn "$(_y fzf) already installed"
 else
     git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
     yes | $HOME/.fzf/install
@@ -227,12 +230,16 @@ sudo tar xf lazygit.tar.gz -C /usr/local/bin lazygit
 rm -f lazygit.tar.gz
 
 inf "Installing $(_g kubectx) and $(_g kubens)"
-sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
-symlink /opt/kubectx/kubectx /usr/local/bin/kubectx
-symlink -s /opt/kubectx/kubens /usr/local/bin/kubens
-mkdir -p $HOME/.config/fish/completions
-symlink /opt/kubectx/completion/kubectx.fish $HOME/.config/fish/completions/
-symlink /opt/kubectx/completion/kubens.fish $HOME/.config/fish/completions/
+if [ -d "/opt/kubectx" ]; then
+    warn "$(_y kubectx) already installed"
+else
+    sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
+    symlink /opt/kubectx/kubectx /usr/local/bin/kubectx
+    symlink -s /opt/kubectx/kubens /usr/local/bin/kubens
+    mkdir -p $HOME/.config/fish/completions
+    symlink /opt/kubectx/completion/kubectx.fish $HOME/.config/fish/completions/
+    symlink /opt/kubectx/completion/kubens.fish $HOME/.config/fish/completions/
+fi
 
 inf "Installing $(_g terraform)"
 tf_version=$(curl -s "https://api.github.com/repos/hashicorp/terraform/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v*([^"]+)".*/\1/')
