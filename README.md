@@ -4,7 +4,7 @@ Home for my dotfiles and initial setup configurations.
 
 No automation tools being used, just plain shell scripts and symbolic links.
 
-Currently supports: macOS, Ubuntu, Fedora.
+Currently supports: macOS, Ubuntu.
 
 Use at your own risk.
 
