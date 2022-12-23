@@ -7,7 +7,7 @@ if [ "$local" == "true" ] || [ "$local" == "1" ]; then
         bash /tmp/.dotfiles/install.sh
 else
     dir=$dir shell=$shell yes=$yes local=$local \
-        bash <(curl -fsSL "https://raw.githubusercontent.com/davidandradeduarte/dotfiles/HEAD/install.sh")
+        bash <(curl -fsSL "https://raw.githubusercontent.com/davidandradeduarte/dotfiles/minimal/install.sh")
 fi
 
 if [ $? -ne 0 ]; then
