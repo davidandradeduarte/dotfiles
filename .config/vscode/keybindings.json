@@ -159,6 +159,11 @@
         "when": "terminal.active"
     },
     {
+        "key": "ctrl+alt+\\",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
         "key": "ctrl+shift+[BracketRight]",
         "command": "-workbench.action.terminal.toggleTerminal",
         "when": "terminal.active"
