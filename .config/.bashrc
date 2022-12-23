@@ -145,6 +145,7 @@ Darwin)
     . /opt/homebrew/etc/profile.d/z.sh
     ;;
 Linux)
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     . $HOME/z.sh
     ;;
 esac

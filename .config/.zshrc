@@ -63,6 +63,7 @@ case `uname` in
     . /opt/homebrew/etc/profile.d/z.sh
   ;;
   Linux)
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     source ~/powerlevel10k/powerlevel10k.zsh-theme
     . $HOME/z.sh
   ;;
