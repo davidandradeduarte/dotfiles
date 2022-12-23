@@ -168,6 +168,11 @@
         "when": "editorTextFocus && !terminalFocus",
         "command": "workbench.action.closeEditorsInOtherGroups"
     },
+    {
+        "key": "ctrl+a [",
+        "when": "editorTextFocus && !terminalFocus",
+        "command": "workbench.action.joinAllGroups"
+    },
     // {
     //     "key": "cmd+w",
     //     "command": "workbench.action.closeWindow",
@@ -293,11 +298,11 @@
     },
     {
         "key": "cmd+\\",
-        "command": "workbench.action.createTerminalEditor"
+        "command": "workbench.action.createTerminalEditorSide"
     },
     {
         "key": "alt+\\",
-        "command": "workbench.action.createTerminalEditorSide"
+        "command": "workbench.action.createTerminalEditor"
     },
     {
         "key": "shift+cmd+i",

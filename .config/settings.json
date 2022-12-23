@@ -1,6 +1,6 @@
 {
     "workbench.editor.untitled.hint": "hidden",
-    "editor.cursorStyle": "block",
+    "editor.cursorStyle": "line",
     "telemetry.telemetryLevel": "off",
     "security.workspace.trust.banner": "never",
     "security.workspace.trust.enabled": false,
@@ -113,7 +113,7 @@
     //     // "terminal.background" : "#1E2127"
     // },
     "workbench.colorCustomizations": {
-        "editor.selectionBackground": "#ffaa3383",
+        "editor.selectionBackground": "#3f3f3f",
         "editor.selectionHighlightBackground": "#ffaa3325",
         "editor.background": "#101010",
         "activityBar.background": "#000000c4",
@@ -124,8 +124,8 @@
         "titleBar.activeBackground": "#000000",
         "editorGroupHeader.tabsBackground": "#000000",
         "editorGroupHeader.noTabsBackground": "#000000",
-        "list.activeSelectionBackground": "#e1ad6588",
-        "list.inactiveSelectionBackground": "#e1ad658a",
+        "list.activeSelectionBackground": "#3f3f3f",
+        "list.inactiveSelectionBackground": "#3f3f3f",
         "list.activeSelectionForeground": "#ffffff",
         "list.inactiveSelectionForeground": "#ffffff",
         "tab.activeBorderTop": "#ffaa33",
@@ -319,9 +319,9 @@
     "git.terminalAuthentication": false,
     "github.gitAuthentication": false,
     "explorer.confirmDelete": false, // this is a workaround because we can't change tab font size
-    "editor.fontSize": 15,
-    "terminal.integrated.fontSize": 15,
-    // "window.zoomLevel": 1,
+    "editor.fontSize": 12,
+    "terminal.integrated.fontSize": 12,
+    "window.zoomLevel": 1,
     "settings.cycle": [
         {
             "id": "lineNumbers",
