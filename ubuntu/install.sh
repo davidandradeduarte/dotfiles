@@ -10,6 +10,7 @@ if [[ $arch != "aarch64" ]]; then
         inf "Updating and upgrading $(_g homebrew)"
         brew update && brew upgrade
     fi
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     formulae=(
         k9s
         nushell
