@@ -188,8 +188,7 @@ sudo wget "https://github.com/PowerShell/PowerShell/releases/download/v${pwsh_ve
 sudo mkdir -p /opt/microsoft/powershell/${pwsh_version}
 sudo tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/${pwsh_version}
 sudo chmod +x /opt/microsoft/powershell/${pwsh_version}/pwsh
-sudo ln -s /opt/microsoft/powershell/${pwsh_version}/pwsh /usr/bin/pwsh
-sudo rm /tmp/powershell.tar.gz
+symlink /opt/microsoft/powershell/${pwsh_version}/pwsh /usr/bin/pwsh
 
 inf "Setting up $(_g docker)"
 if [ -z "$(pidof systemd)" ]; then
@@ -225,11 +224,11 @@ rm -f lazygit.tar.gz
 
 inf "Installing $(_g kubectx) and $(_g kubens)"
 sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
-sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
-sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+symlink /opt/kubectx/kubectx /usr/local/bin/kubectx
+symlink -s /opt/kubectx/kubens /usr/local/bin/kubens
 mkdir -p $HOME/.config/fish/completions
-ln -s /opt/kubectx/completion/kubectx.fish $HOME/.config/fish/completions/
-ln -s /opt/kubectx/completion/kubens.fish $HOME/.config/fish/completions/
+symlink /opt/kubectx/completion/kubectx.fish $HOME/.config/fish/completions/
+symlink /opt/kubectx/completion/kubens.fish $HOME/.config/fish/completions/
 
 inf "Installing $(_g terraform)"
 tf_version=$(curl -s "https://api.github.com/repos/hashicorp/terraform/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v*([^"]+)".*/\1/')
@@ -327,7 +326,7 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash -s -- -y
 
 inf "Setting up $(_g vim)"
 curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-symlink $HOME/.vimrc $dir/.config/.vimrc
+symlink $dir/.config/.vimrc $HOME/.vimrc
 vim +'PlugInstall --sync' +qa
 
 code_extensions=(
@@ -371,14 +370,14 @@ wget -qO "$HOME/.local/share/fonts/MesloLGS NF Bold Italic.ttf" "https://github.
 fc-cache -f -v
 
 inf "Creating symlinks"
-symlink $HOME/.gitconfig $dir/.config/.gitconfig
-symlink $HOME/.bashrc $dir/.config/.bashrc
-symlink $HOME/.zshrc $dir/.config/.zshrc
-symlink $HOME/.p10k.zsh $dir/.config/.p10k.zsh
-symlink $HOME/.config/fish/config.fish $dir/.config/config.fish
-symlink $HOME/.tmux.conf $dir/.config/.tmux.conf
-symlink $HOME/.config/nushell/config.nu $dir/.config/config.nu
-symlink $HOME/.config/nushell/env.nu $dir/.config/env.nu
-symlink $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1 $dir/.config/Microsoft.PowerShell_profile.ps1
-symlink $HOME/.config/Code/User/settings.json $dir/.config/settings.json
-symlink $HOME/.config/Code/User/keybindings.json $dir/.config/keybindings.json
+symlink $dir/.config/.gitconfig $HOME/.gitconfig
+symlink $dir/.config/.bashrc $HOME/.bashrc
+symlink $dir/.config/.zshrc $HOME/.zshrc
+symlink $dir/.config/.p10k.zsh $HOME/.p10k.zsh
+symlink $dir/.config/config.fish $HOME/.config/fish/config.fish
+symlink $dir/.config/.tmux.conf $HOME/.tmux.conf
+symlink $dir/.config/config.nu $HOME/.config/nushell/config.nu
+symlink $dir/.config/env.nu $HOME/.config/nushell/env.nu
+symlink $dir/.config/Microsoft.PowerShell_profile.ps1 $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1
+symlink $dir/.config/settings.json $HOME/.config/Code/User/settings.json
+symlink $dir/.config/keybindings.json $HOME/.config/Code/User/keybindings.json

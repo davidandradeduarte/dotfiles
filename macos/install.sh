@@ -151,7 +151,7 @@ fi
 
 inf "Setting up $(_g vim)"
 curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-symlink $HOME/.vimrc $dir/.config/.vimrc
+symlink $dir/.config/.vimrc $HOME/.vimrc
 vim +'PlugInstall --sync' +qa
 
 code_extensions=(
@@ -194,14 +194,14 @@ wget -qO "$HOME/Library/Fonts/MesloLGS NF Italic.ttf" "https://github.com/romkat
 wget -qO "$HOME/Library/Fonts/MesloLGS NF Bold Italic.ttf" "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf"
 
 inf "Creating symlinks"
-symlink $HOME/.gitconfig $dir/.config/.gitconfig
-symlink $HOME/.bashrc $dir/.config/.bashrc
-symlink $HOME/.zshrc $dir/.config/.zshrc
-symlink $HOME/.p10k.zsh $dir/.config/.p10k.zsh
-symlink $HOME/.config/fish/config.fish $dir/.config/config.fish
-symlink $HOME/.tmux.conf $dir/.config/.tmux.conf
-symlink $HOME/.config/nushell/config.nu $dir/.config/config.nu
-symlink $HOME/.config/nushell/env.nu $dir/.config/env.nu
-symlink $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1 $dir/.config/Microsoft.PowerShell_profile.ps1
-symlink "$HOME/Library/Application Support/Code/User/settings.json" $dir/.config/settings.json
-symlink "$HOME/Library/Application Support/Code/User/keybindings.json" $dir/.config/keybindings.json
+symlink $dir/.config/.gitconfig $HOME/.gitconfig
+symlink $dir/.config/.bashrc $HOME/.bashrc
+symlink $dir/.config/.zshrc $HOME/.zshrc
+symlink $dir/.config/.p10k.zsh $HOME/.p10k.zsh
+symlink $dir/.config/config.fish $HOME/.config/fish/config.fish
+symlink $dir/.config/.tmux.conf $HOME/.tmux.conf
+symlink $dir/.config/config.nu $HOME/.config/nushell/config.nu
+symlink $dir/.config/env.nu $HOME/.config/nushell/env.nu
+symlink $dir/.config/Microsoft.PowerShell_profile.ps1 $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1
+symlink $dir/.config/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
+symlink $dir/.config/keybindings.json "$HOME/Library/Application Support/Code/User/keybindings.json"

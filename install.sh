@@ -118,20 +118,22 @@ while [[ $# -gt 0 ]]; do
 done
 
 symlink() {
-    if [ -f "$1" ] && [ ! -L "$1" ] && [ ! "$(readlink "$1")" == "$2" ]; then
-        inf "Backing up $(_g $1) to $(_g $1.bak.$epoch)"
-        mv "$1" "$1.bak.$epoch"
-    fi
+    # $1: source (file)
+    # $2: destination (symlink)
     if [ ! -e "$1" ]; then
-        mkdir -p "$(dirname "$1")"
-        touch "$1"
-    fi
-    if [ ! -e "$2" ]; then
-        err "File $(_r $2) doesn't exist"
+        err "File $(_r $1) doesn't exist"
         exit 1
     fi
-    inf "Creating symbolic link from $(_g $2) to $(_g $1)"
-    ln -sf "$2" "$1"
+    if [ -f "$2" ] && [ ! -L "$2" ] && [ ! "$(readlink "$2")" == "$1" ]; then
+        inf "Backing up $(_g $2) to $(_g $2.bak.$epoch)"
+        mv "$2" "$2.bak.$epoch"
+    fi
+    if [ ! -e "$2" ]; then
+        mkdir -p "$(dirname "$2")"
+        touch "$2"
+    fi
+    inf "Creating symbolic link from $(_g $1) to $(_g $2)"
+    sudo ln -sf "$1" "$2"
 }
 
 echo "---------------------------------------------"
