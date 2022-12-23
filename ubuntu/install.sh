@@ -77,7 +77,7 @@ curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash -
 
 inf "Adding $(_g docker) repository"
 sudo mkdir -p /etc/apt/keyrings
-rm -f /etc/apt/keyrings/docker.gpg
+sudo rm -f /etc/apt/keyrings/docker.gpg
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 echo \
     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
