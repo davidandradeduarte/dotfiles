@@ -205,7 +205,7 @@ sudo tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/${pwsh_version}
 sudo chmod +x /opt/microsoft/powershell/${pwsh_version}/pwsh
 symlink /opt/microsoft/powershell/${pwsh_version}/pwsh /usr/bin/pwsh
 
-inf "Setting up $(_g docker)"
+inf "Configuring $(_g docker)"
 if [ -z "$(pidof systemd)" ]; then
     warn "$(_y docker) requires systemd to be installed"
 else
@@ -344,7 +344,7 @@ flux completion fish >$HOME/.config/fish/completions/flux.fish
 inf "Installing $(_g azure-cli)"
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash -s -- -y
 
-inf "Setting up $(_g vim)"
+inf "Configuring $(_g vim)"
 curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 symlink $dir/.config/.vimrc $HOME/.vimrc
 vim +'PlugInstall --sync' +qa

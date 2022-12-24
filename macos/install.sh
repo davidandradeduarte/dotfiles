@@ -80,6 +80,9 @@ formulae=(
     watch
     fluxcd/tap/flux
     kyoh86/tap/richgo
+    koekeishiya/formulae/yabai
+    koekeishiya/formulae/skhd
+    cmacrae/formulae/spacebar
 )
 
 inf "Installing brew formulae $(_g ${formulae[@]})"
@@ -114,6 +117,20 @@ casks=(
 )
 inf "Installing brew casks $(_g ${casks[@]})"
 brew install --cask ${casks[@]}
+
+inf "Configuring $(_g yabai))"
+warn "yabai needs SIP disabled to work properly. Please follow the instructions at $(_y 'https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection')"
+sudo sh -c 'echo "$(whoami) ALL=(root) NOPASSWD:sha256:$(shasum -a 256 $(which yabai) | cut -d '\'' '\'' -f1) $(which yabai) --load-sa" >> /private/etc/sudoers.d/yabai'
+
+brew_services=(
+    yabai
+    skhd
+    spacebar
+)
+inf "Starting brew services $(_g ${brew_services[@]})"
+for service in ${brew_services[@]}; do
+    brew services start $service
+done
 
 go_modules=(
     golang.org/x/tools/gopls@latest
@@ -159,7 +176,7 @@ else
     curl -L https://get.oh-my.fish | fish -c 'source - --noninteractive --yes'
 fi
 
-inf "Setting up $(_g vim)"
+inf "Configuring $(_g vim)"
 curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 symlink $dir/.config/.vimrc $HOME/.vimrc
 vim +'PlugInstall --sync' +qa
@@ -204,3 +221,6 @@ symlink $dir/.config/env.nu $HOME/.config/nushell/env.nu
 symlink $dir/.config/Microsoft.PowerShell_profile.ps1 $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1
 symlink $dir/.config/vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
 symlink $dir/.config/vscode/keybindings.json "$HOME/Library/Application Support/Code/User/keybindings.json"
+symlink $dir/.config/.yabairc $HOME/.yabairc
+symlink $dir/.config/.skhdrc $HOME/.skhdrc
+symlink $dir/.config/spacebarrc $HOME/.config/spacebar/spacebarrc
