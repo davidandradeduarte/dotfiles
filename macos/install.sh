@@ -114,6 +114,8 @@ casks=(
     # bitwarden # the brew version can't be used for browser integration
     balenaetcher
     vmware-fusion
+    homebrew/cask-fonts/font-fontawesome
+    homebrew/cask-fonts/font-jetbrains-mono
 )
 inf "Installing brew casks $(_g ${casks[@]})"
 brew install --cask ${casks[@]}
@@ -199,10 +201,10 @@ inf "Installing font $(_g FiraCode)"
 curl -fLo $HOME/Library/Fonts/FiraCode.zip "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraCode.zip"
 unzip -o $HOME/Library/Fonts/FiraCode.zip -d $HOME/Library/Fonts
 rm $HOME/Library/Fonts/FiraCode.zip
-inf "Installing font $(_g JetBrainsMono)"
-curl -fLo $HOME/Library/Fonts/JetBrainsMono.zip "https://download.jetbrains.com/fonts/JetBrainsMono-2.242.zip"
-unzip -o $HOME/Library/Fonts/JetBrainsMono.zip -d $HOME/Library/Fonts
-rm $HOME/Library/Fonts/JetBrainsMono.zip
+# inf "Installing font $(_g JetBrainsMono)"
+# curl -fLo $HOME/Library/Fonts/JetBrainsMono.zip "https://download.jetbrains.com/fonts/JetBrainsMono-2.242.zip"
+# unzip -o $HOME/Library/Fonts/JetBrainsMono.zip -d $HOME/Library/Fonts
+# rm $HOME/Library/Fonts/JetBrainsMono.zip
 inf "Installing font $(_g Meslo Nerd Font patched for Powerlevel10k)"
 wget -qO "$HOME/Library/Fonts/MesloLGS NF Regular.ttf" "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf"
 wget -qO "$HOME/Library/Fonts/MesloLGS NF Bold.ttf" "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf"
