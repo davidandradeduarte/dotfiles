@@ -83,10 +83,12 @@ formulae=(
     koekeishiya/formulae/yabai
     koekeishiya/formulae/skhd
     cmacrae/formulae/spacebar
+    direnv
+    fasd
 )
 
 inf "Installing brew formulae $(_g ${formulae[@]})"
-brew install ${formulae[@]}
+brew install -f ${formulae[@]}
 
 casks=(
     powershell
@@ -118,7 +120,7 @@ casks=(
     homebrew/cask-fonts/font-jetbrains-mono
 )
 inf "Installing brew casks $(_g ${casks[@]})"
-brew install --cask ${casks[@]}
+brew install -f --cask ${casks[@]}
 
 inf "Configuring $(_g yabai))"
 warn "yabai needs SIP disabled to work properly. Please follow the instructions at $(_y 'https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection')"
@@ -176,6 +178,15 @@ if [ -d $HOME/.local/share/omf ]; then
     warn "$(_y oh-my-fish) already installed"
 else
     curl -L https://get.oh-my.fish | fish -c 'source - --noninteractive --yes'
+fi
+
+inf "Installing $(_g nix)"
+if [ -d $HOME/.nix-profile ]; then
+    warn "$(_y nix) already installed"
+else
+    sudo rm -f /etc/bashrc.backup-before-nix
+    sudo rm -f /etc/zshrc.backup-before-nix
+    sh <(curl -L https://nixos.org/nix/install) --yes
 fi
 
 inf "Configuring $(_g vim)"

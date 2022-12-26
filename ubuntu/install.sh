@@ -23,7 +23,7 @@ if [[ $arch != "aarch64" ]]; then
         stern
     )
     inf "Installing brew formulae $(_g ${formulae[@]})"
-    brew install ${formulae[@]}
+    brew install -f ${formulae[@]}
 else
     warn "Skipping $(_y Homebrew) installation on $(_y $arch). Unsupported."
 fi
@@ -90,6 +90,12 @@ echo \
 inf "Adding $(_g fish) repository"
 sudo apt-add-repository -y ppa:fish-shell/release-3
 
+inf "Adding $(_g universe) repository"
+sudo add-apt-repository -y universe
+
+inf "Adding $(_g fasd) repository"
+sudo add-apt-repository ppa:aacebedo/fasd
+
 sudo apt update && sudo apt autoremove -y
 apt_packages=(
     bash
@@ -119,6 +125,8 @@ apt_packages=(
     docker-ce-cli
     containerd.io
     docker-compose-plugin
+    direnv
+    fasd
 )
 inf "Installing apt packages $(_g ${apt_packages[@]})"
 sudo apt install -y --assume-yes ${apt_packages[@]}
@@ -343,6 +351,15 @@ flux completion fish >$HOME/.config/fish/completions/flux.fish
 
 inf "Installing $(_g azure-cli)"
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash -s -- -y
+
+inf "Installing $(_g nix)"
+if [ -d $HOME/.nix-profile ]; then
+    warn "$(_y nix) already installed"
+else
+    sudo rm -f /etc/bashrc.backup-before-nix
+    sudo rm -f /etc/zshrc.backup-before-nix
+    sh <(curl -L https://nixos.org/nix/install) --daemon --yes
+fi
 
 inf "Configuring $(_g vim)"
 curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

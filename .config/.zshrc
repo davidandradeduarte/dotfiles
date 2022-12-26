@@ -69,3 +69,4 @@ case `uname` in
   ;;
 esac
 eval $(thefuck --alias duck)
+eval "$(fasd --init auto)"

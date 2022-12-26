@@ -151,3 +151,4 @@ Linux)
 esac
 . <(flux completion bash)
 eval "$(thefuck --alias duck)"
+eval "$(fasd --init auto)"
