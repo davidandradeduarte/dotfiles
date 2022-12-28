@@ -1,0 +1,8 @@
+yo: https://www.youtube.com/results?search_query=%s Youtube
+gm: https://www.google.com/maps?q=%s GoogleMaps
+go: https://www.google.com/search?q=%s Google
+gd: https://duckduckgo.com/?q=%s DuckDuckGo
+wi: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia
+am: https://www.amazon.es/s/?field-keywords=%s Amazon
+sc: https://soundcloud.com/search/sets?q=%s SoundCloud
+gh: https://github.com/search?o=desc&q=%s&s=&type=Repositories GitHub

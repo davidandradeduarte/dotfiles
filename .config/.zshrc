@@ -1,3 +1,9 @@
+#             __             
+# ____  _____/ /_  __________
+#/_  / / ___/ __ \/ ___/ ___/
+# / /_(__  ) / / / /  / /__  
+#/___/____/_/ /_/_/   \___/ 
+
 # Set up the prompt
 
 autoload -Uz promptinit
@@ -70,3 +76,13 @@ case `uname` in
 esac
 eval $(thefuck --alias duck)
 eval "$(fasd --init auto)"
+alias zsh_reload='source ~/.zshrc'
+alias code='code -a $1'
+alias cat='bat -p'
+alias l='exa -la'
+alias ll='exa -l'
+alias vim=nvim
+alias curl='curlie'
+alias lg='lazygit'
+export FZF_DEFAULT_COMMAND='fd'
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --height 90% --layout=reverse --color=fg:-1,bg:-1,hl:#78ff98 --color=fg+:#d0d0d0,bg+:#262626,hl+:#53ff79 --color=info:#d19a66,prompt:#d7005f,pointer:#ffaa33 --color=marker:#87ff00,spinner:#ffaa33,header:#61afef

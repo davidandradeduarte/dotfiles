@@ -240,7 +240,7 @@
         "key": "shift+cmd+g",
         "command": "explorer.newFolder"
     },
-    // { // duplicate to disable shift+cmd+s
+    // { // duplicate to disable shift+cmd+
     //     "key": "shift+cmd+s", // TODO: not the best shortcut
     //     "command": "workbench.view.explorer",
     //     "when": "viewContainer.workbench.view.explorer.enabled"
@@ -296,10 +296,29 @@
     //         ]
     //     }
     // }
+    // {
+    //     "key": "shift+cmd+l",
+    //     "command": "editor.lineNumbers",
+    //     "when": "editorFocus"
+    // },
     {
         "key": "shift+cmd+l",
-        "command": "settings.cycle.lineNumbers",
-        "when": "editorFocus"
+        "command": "settings.cycle",
+        "when": "editorTextFocus",
+        "args": {
+            "id": "relativeLineNumbers",
+            "values": [
+                {
+                    "editor.lineNumbers": "off"
+                },
+                {
+                    "editor.lineNumbers": "on"
+                },
+                {
+                    "editor.lineNumbers": "relative"
+                }
+            ]
+        }
     },
     {
         "key": "cmd+\\",
