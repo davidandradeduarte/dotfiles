@@ -81,6 +81,8 @@ The script will always try to pull the latest software available (except in some
 
 If by any chance the script replaces a file that you have modified, you can probably find it in the same directory with a `.bak.$epoch` extension. (e.g. `~/.bashrc.bak.1620000000`)
 
+All UIs will be using Gruvbox colors when possible. (previously Ayu)
+
 ## Docker
 
 ```sh
