@@ -8,8 +8,8 @@ Currently supports: macOS, Ubuntu.
 
 Use at your own risk.
 
-![editor](.screenshots/editor_gruv.png)
-More images [here](.screenshots).
+![editor](screenshots/editor_gruv_with_terminal.png)
+More images [here](screenshots).
 
 Table of Contents
 -----------------

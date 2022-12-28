@@ -94,7 +94,7 @@ inf "Adding $(_g universe) repository"
 sudo add-apt-repository -y universe
 
 inf "Adding $(_g fasd) repository"
-sudo add-apt-repository ppa:aacebedo/fasd
+sudo add-apt-repository -y ppa:aacebedo/fasd
 
 sudo apt update && sudo apt autoremove -y
 apt_packages=(

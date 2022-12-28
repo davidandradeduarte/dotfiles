@@ -1,4 +1,4 @@
-FROM fedora:latest
+FROM ubuntu:latest
 
 ARG dir
 ENV dir=${dir}
@@ -12,9 +12,10 @@ ENV yes=${yes}
 ARG local
 ENV local=${local}
 
-RUN dnf install -y sudo curl git
+RUN apt-get update && \
+    apt install -y sudo curl git
 
-COPY docker/entrypoint.sh /tmp/entrypoint.sh
+COPY os/docker/entrypoint.sh /tmp/entrypoint.sh
 RUN chmod +x /tmp/entrypoint.sh
 
 RUN useradd -ms /bin/bash david

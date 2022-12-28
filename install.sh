@@ -211,8 +211,8 @@ else
 fi
 
 inf "Installing dotfiles for $(_g $distro)"
-if [ -f "$dir/$distro/install.sh" ]; then
-    . "$dir/$distro/install.sh"
+if [ -f "$dir/os/$distro/install.sh" ]; then
+    . "$dir/os/$distro/install.sh"
 else
     err "No install script for $(_r $distro)"
     exit 1
