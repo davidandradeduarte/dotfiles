@@ -1,4 +1,4 @@
-# Dotfiles
+# dotfiles
 
 Home for my dotfiles and initial setup configurations.
 
