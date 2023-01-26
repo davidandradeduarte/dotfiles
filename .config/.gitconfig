@@ -5,6 +5,7 @@ username = davidandradeduarte
 
 [core]
 editor = vim
+pager = diff-so-fancy | less --tabs=4 -RFX
 
 [init]
 defaultBranch = main
@@ -16,6 +17,27 @@ cb = checkout -b
 fp = !git fetch && git pull --no-rebase
 alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 
-# Go modules on Azure DevOps
-[url "git@ssh.dev.azure.com:v3"]
-insteadOf = https://dev.azure.com
+[interactive]
+diffFilter = diff-so-fancy --patch
+
+[color]
+ui = true
+
+[color "diff-highlight"]
+# breaks lazygit
+# oldNormal = red bold
+# oldHighlight = red bold 52
+# newNormal = green bold
+# newHighlight = green bold 22
+
+[color "diff"]
+meta = 11
+frag = magenta bold
+func = 146 bold
+commit = yellow bold
+old = red bold
+new = green bold
+whitespace = red reverse
+
+[include]
+path = ~/.gitconfig.work

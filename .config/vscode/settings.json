@@ -1,26 +1,26 @@
 {
-    "workbench.colorTheme": "Gruvbox Dark Medium",
-    "editor.inlineSuggest.enabled": true,
-    "editor.fontFamily": "JetBrains Mono Regular, Menlo, Monaco, 'Courier New', monospace",
+    // todo: find a sweet spot between editor suggestions/vim insert/copilot
+    // "editor.inlineSuggest.enabled": true,
+    // "editor.quickSuggestions": {
+    //     "other": "off",
+    //     "comments": "off",
+    //     "strings": "off"
+    // },
+    "editor.quickSuggestionsDelay": 5000,
     "files.autoSave": "afterDelay",
     "dateTime.showDayOfMonth": true,
     "dateTime.showMonth": true,
     "dateTime.showSeconds": true,
     "workbench.editor.untitled.hint": "hidden",
-    "workbench.editor.labelFormat": "long",
     "editor.formatOnSave": true,
     // before
-    "workbench.editor.untitled.hint": "hidden",
     "editor.cursorStyle": "line",
     "telemetry.telemetryLevel": "off",
     "security.workspace.trust.banner": "never",
     "security.workspace.trust.enabled": false,
     "security.workspace.trust.startupPrompt": "never",
-    "window.titleBarStyle": "native",
-    "files.autoSave": "afterDelay",
     // "terminal.integrated.macOptionIsMeta": true, // this make alt+c work on fzf, but breaks alt+shift symbnols (e.g {})
     "editor.folding": false,
-    "editor.glyphMargin": false,
     "editor.rulers": [
         140
     ],
@@ -29,220 +29,60 @@
     "editor.tabSize": 4,
     "keyboard.dispatch": "keyCode",
     "terminal.integrated.profiles.osx": {
-        // "bash": {
-        //     "path": "bash",
-        //     "args": [
-        //         "-l"
-        //     ],
-        //     "icon": "terminal-bash"
+        "zsh": {
+            "path": "zsh",
+            "args": [
+                "-l"
+            ]
+        }
+        // "tmux": {
+        //     "path": "tmux",
+        //     "icon": "terminal-tmux",
         // },
-        // "zsh": {
-        //     "path": "zsh",
-        //     "args": [
-        //         "-l"
-        //     ]
-        // },
-        // "fish": {
-        //     "path": "fish",
-        //     "args": [
-        //         "-l"
-        //     ]
-        // },
-        // "pwsh": {
-        //     "path": "pwsh",
-        //     "icon": "terminal-powershell"
-        // },
-        "tmux": {
-            "path": "tmux",
-            "icon": "terminal-tmux",
-        },
     },
-    "terminal.integrated.defaultProfile.osx": "tmux",
-    // "workbench.colorCustomizations": {
-    //     "editor.background": "#101010",
-    //     "activityBar.background": "#000000c4",
-    //     // "statusBar.foreground": "#ffaa33",
-    //     "terminal.background": "#101010",
-    //     "statusBar.background": "#000000c4",
-    //     "panel.background": "#000000c4",
-    //     "sideBar.background": "#000000c4",
-    //     "titleBar.activeBackground": "#000000",
-    //     "editorGroupHeader.tabsBackground": "#000000",
-    //     "editorGroupHeader.noTabsBackground": "#000000",
-    //     "tab.activeBorderTop": "#ffaa33",
-    //     "tab.border": "#000000",
-    //     "tab.inactiveBackground": "#000000",
-    //     "statusBar.noFolderBackground": "#000000c4",
-    //     // "statusBar.foreground": "#ffffff",
-    //     "editorLineNumber.activeForeground": "#ffaa33",
-    //     "gitDecoration.modifiedResourceForeground": "#f2d601",
-    //     "editorLineNumber.foreground": "#222222",
-    //     // "list.inactiveSelectionForeground": "#000000",
-    //     "editorRuler.foreground": "#ffaa3326",
-    //     // "editor.lineHighlightBackground": "#ff0000",
-    //     // terminal colors
-    //     // "terminal.ansiBlack": "#000000",
-    //     // "terminal.ansiBrightBlack": "#666666",
-    //     // "terminal.ansiRed": "#990000",
-    //     // "terminal.ansiBrightRed": "#E50000",
-    //     // "terminal.ansiGreen": "#00A600",
-    //     // "terminal.ansiBrightGreen": "#00D900",
-    //     // "terminal.ansiYellow": "#999900",
-    //     // "terminal.ansiBrightYellow": "#E5E500",
-    //     // "terminal.ansiBlue": "#0000B2",
-    //     // "terminal.ansiBrightBlue": "#0000FF",
-    //     // "terminal.ansiMagenta": "#B200B2",
-    //     // "terminal.ansiBrightMagenta": "#E500E5",
-    //     // "terminal.ansiCyan": "#00A6B2",
-    //     // "terminal.ansiBrightCyan": "#00E5E5",
-    //     // "terminal.ansiWhite": "#BFBFBF",
-    //     // "terminal.ansiBrightWhite": "#E5E5E5",
-    //     // "terminalCursor.foreground": "#8B8B8B",
-    //     // "terminal.foreground": "#FFFFFF",
-    //     // "terminal.selectionBackground": "#314F78",
-    //     // "terminal.background" : "#000000",
-    //     //tmp
-    //     // "terminal.ansiBlack": "#1E2127",
-    //     // "terminal.ansiBrightBlack": "#5C6370",
-    //     // "terminal.ansiRed": "#E06C75",
-    //     // "terminal.ansiBrightRed": "#E06C75",
-    //     // "terminal.ansiGreen": "#98C379",
-    //     // "terminal.ansiBrightGreen": "#98C379",
-    //     // "terminal.ansiYellow": "#D19A66",
-    //     // "terminal.ansiBrightYellow": "#D19A66",
-    //     // "terminal.ansiBlue": "#61AFEF",
-    //     // "terminal.ansiBrightBlue": "#61AFEF",
-    //     // "terminal.ansiMagenta": "#C678DD",
-    //     // "terminal.ansiBrightMagenta": "#C678DD",
-    //     // "terminal.ansiCyan": "#56B6C2",
-    //     // "terminal.ansiBrightCyan": "#56B6C2",
-    //     // "terminal.ansiWhite": "#ABB2BF",
-    //     // "terminal.ansiBrightWhite": "#FFFFFF",
-    //     // "terminalCursor.foreground": "#5C6370",
-    //     // "terminal.foreground": "#ABB2BF",
-    //     // "terminal.selectionBackground": "#3A3F4B",
-    //     // "terminal.background" : "#1E2127"
-    // },
-    // "workbench.colorCustomizations": {
-    //     "editor.selectionBackground": "#3f3f3f",
-    //     "editor.selectionHighlightBackground": "#ffaa3325",
-    //     "editor.background": "#101010",
-    //     "activityBar.background": "#000000c4",
-    //     "terminal.background": "#101010",
-    //     "statusBar.background": "#000000c4",
-    //     "panel.background": "#000000c4",
-    //     "sideBar.background": "#000000c4",
-    //     "titleBar.activeBackground": "#000000",
-    //     "editorGroupHeader.tabsBackground": "#000000",
-    //     "editorGroupHeader.noTabsBackground": "#000000",
-    //     "list.activeSelectionBackground": "#3f3f3f",
-    //     "list.inactiveSelectionBackground": "#3f3f3f",
-    //     "list.activeSelectionForeground": "#ffffff",
-    //     "list.inactiveSelectionForeground": "#ffffff",
-    //     "tab.activeBorderTop": "#ffaa33",
-    //     "tab.border": "#000000",
-    //     "tab.inactiveBackground": "#000000",
-    //     "statusBar.noFolderBackground": "#000000c4",
-    //     "editorLineNumber.activeForeground": "#ffaa33",
-    //     "gitDecoration.modifiedResourceForeground": "#f2d601",
-    //     "editorLineNumber.foreground": "#3f3f3f",
-    //     "editorRuler.foreground": "#ffaa3326",
-    //     "statusBar.debuggingBackground": "#000000c4",
-    //     "statusBar.debuggingForeground": "#ffaa33",
-    //     // "statusBar.foreground": "#222222",
-    //     "editor.findMatchBackground": "#101010",
-    //     "editor.findMatchBorder": "#ffaa33",
-    //     "editor.findMatchHighlightBackground": "#101010",
-    //     "editor.findMatchHighlightBorder": "#ffffff",
-    //     "searchEditor.findMatchBackground": "#101010",
-    //     "searchEditor.findMatchBorder": "#ffffff",
-    //     "editorInlayHint.background": "#101010",
-    //     "editorInlayHint.foreground": "#797979",
-    //     "foreground": "#ffffff"
-    // },
-    // "editor.tokenColorCustomizations": {
-    //     "textMateRules": [
-    //         // {
-    //         //     "scope": "string",
-    //         //     "settings": {
-    //         //         "foreground": "#ebc687"
-    //         //     }
-    //         // },
-    //         // {
-    //         //     "scope": "comment",
-    //         //     "settings": {
-    //         //         "foreground": "#ebc687"
-    //         //     }
-    //         // },
-    //         // {
-    //         //     "scope": "keyword",
-    //         //     "settings": {
-    //         //         "foreground": "#ecd843"
-    //         //     }
-    //         // },
-    //         // {
-    //         //     "scope": "keyword.operator",
-    //         //     "settings": {
-    //         //         "foreground": "#53d015"
-    //         //     }
-    //         // },
-    //         // {
-    //         //     "scope": "keyword.control",
-    //         //     "settings": {
-    //         //         "foreground": "#be893f"
-    //         //     }
-    //         // },
-    //         // {
-    //         //     "scope": "variable",
-    //         //     "settings": {
-    //         //         "foreground": "#3c9274"
-    //         //     }
-    //         // },
-    //         // {
-    //         //     "scope": "entity.name.function",
-    //         //     "settings": {
-    //         //         "foreground": "#ffaa33"
-    //         //     }
-    //         // },
-    //         // {
-    //         //     "scope": "punctuation",
-    //         //     "settings": {
-    //         //         "foreground": "#ffffff"
-    //         //     }
-    //         // },
-    //     ]
-    // },
-    "workbench.editor.tabCloseButton": "off",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    // "editor.occurrencesHighlight": true,
+    // "editor.selectionHighlight": true,
+    "workbench.colorCustomizations": {
+        "editorWhitespace.foreground": "#555050",
+        "editorIndentGuide.background": "#fff0",
+        "[Gruvbox Dark Hard]": {
+            "tab.activeBorder": "#aab01d"
+        }
+    },
     "editor.minimap.maxColumn": 30,
     "editor.minimap.enabled": false,
     "extensions.ignoreRecommendations": true,
     "go.toolsManagement.autoUpdate": true,
     "workbench.layoutControl.enabled": false,
-    "editor.fontFamily": "'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "'JetBrainsMonoNerdFontComplete-ExtraLight', Menlo, Monaco, 'Courier New', monospace",
     "workbench.iconTheme": null,
     "customizeUI.titleBar": "frameless",
-    "customizeUI.font.monospace": "JetBrains Mono",
-    "customizeUI.font.regular": "JetBrains Mono",
+    "customizeUI.font.monospace": "JetBrainsMonoNerdFontComplete-ExtraLight",
+    "customizeUI.font.regular": "JetBrainsMonoNerdFontComplete-ExtraLight",
     "customizeUI.fontSizeMap": {
-        "13px": "12px",
-        "monospace": "12px"
+        "13px": "11px",
+        "12px": "11px",
+        "window-title": "12px",
+        "tab-title": "12px", // Used for editor tab titles
+        "monospace": "10.5px" // Used for monospace fonts in user interface
+        // "menu": "13px", // Used for menu items (windows only)
     },
     "customizeUI.activityBarHideSettings": true,
     "workbench.panel.opensMaximized": "always",
-    "editor.inlineSuggest.enabled": true,
-    "github.copilot.enable": {
-        "*": true,
-        "yaml": true,
-        "plaintext": false,
-        "markdown": true
-    },
+    // "editor.inlineSuggest.enabled": true,
+    // "github.copilot.enable": {
+    //     "*": true,
+    //     "yaml": true,
+    //     "plaintext": true,
+    //     "markdown": false
+    // },
     "terminal.integrated.environmentChangesIndicator": "off",
-    "editor.formatOnSave": true,
     "editor.suggestSelection": "first",
     // "vim.statusBarColorControl": true,
     // "vim.statusBarColors.insert": [
-    //     "#ffaa33",
-    //     "#000000c4"
+    //     "#000000c4",
+    //     "#aab01d",
     // ],
     // "vim.statusBarColors.normal": [
     //     "#000000c4",
@@ -250,11 +90,11 @@
     // ],
     // "vim.statusBarColors.visual": [
     //     "#000000c4",
-    //     "#ffaa33"
+    //     "#c76f8a"
     // ],
     // "vim.statusBarColors.visualline": [
     //     "#000000c4",
-    //     "#ffaa33"
+    //     "#c76f8a"
     // ],
     // "vim.statusBarColors.commandlineinprogress": [
     //     "#000000c4",
@@ -264,26 +104,26 @@
     //     "#000000c4",
     //     "#ffaa33"
     // ],
-    // "vim.statusBarColors.easymotioninputmode": [
-    //     "#000000c4",
-    //     "#ffaa33"
-    // ],
-    // "vim.statusBarColors.easymotionmode": [
-    //     "#000000c4",
-    //     "#ffaa33"
-    // ],
-    // "vim.statusBarColors.replace": [
-    //     "#000000c4",
-    //     "#ffaa33"
-    // ],
+    // // "vim.statusBarColors.easymotioninputmode": [
+    // //     "#000000c4",
+    // //     "#ffaa33"
+    // // ],
+    // // "vim.statusBarColors.easymotionmode": [
+    // //     "#000000c4",
+    // //     "#ffaa33"
+    // // ],
+    // // "vim.statusBarColors.replace": [
+    // //     "#000000c4",
+    // //     "#ffaa33"
+    // // ],
     // "vim.statusBarColors.searchinprogressmode": [
     //     "#000000c4",
-    //     "#ffaa33"
+    //     "#ffffff"
     // ],
-    // "vim.statusBarColors.surroundinputmode": [
-    //     "#000000c4",
-    //     "#ffaa33"
-    // ],
+    // // "vim.statusBarColors.surroundinputmode": [
+    // //     "#000000c4",
+    // //     "#ffaa33"
+    // // ],
     "search.quickOpen.includeHistory": false,
     "files.hotExit": "off",
     "terminal.integrated.persistentSessionReviveProcess": "never",
@@ -291,8 +131,6 @@
     "workbench.editor.restoreViewState": false,
     "window.newWindowDimensions": "maximized",
     "workbench.startupEditor": "none",
-    "workbench.editor.showTabs": true,
-    "workbench.editor.tabSizing": "shrink",
     // "editor.inlayHints.padding": true,
     // "go.inlayHints.parameterNames": true,
     // "go.inlayHints.assignVariableTypes": true,
@@ -313,47 +151,293 @@
     // "csharp.inlayHints.types.forImplicitVariableTypes": true,
     // "csharp.inlayHints.types.forImplicitObjectCreation": true,
     // "csharp.inlayHints.types.forLambdaParameterTypes": true,
-    "editor.guides.bracketPairs": "active",
+    // "editor.guides.bracketPairs": "active",
+    "editor.guides.bracketPairs": false,
+    "editor.guides.highlightActiveBracketPair": false,
+    "editor.guides.bracketPairsHorizontal": false,
     "editor.bracketPairColorization.enabled": false,
-    "editor.guides.highlightActiveBracketPair": false, // todo: not sure if better on or off
-    "workbench.tips.enabled": false,
-    "diffEditor.renderSideBySide": false,
     "editor.renderWhitespace": "all",
     "editor.inlayHints.fontSize": 9,
-    "vim.searchMatchColor": "#ffaa33",
-    "vim.searchMatchTextColor": "#000000c4",
     "vim.searchHighlightColor": "#ffaa33",
-    "vim.searchHighlightTextColor": "#000000c4",
     "gitHistory.includeRemoteBranches": true,
     "gitHistory.hideCommitViewExplorer": true,
     "gitHistory.showEditorTitleMenuBarIcons": false,
     "git.terminalAuthentication": false,
     "github.gitAuthentication": false,
-    "explorer.confirmDelete": false, // this is a workaround because we can't change tab font size
-    "editor.fontSize": 12,
-    "terminal.integrated.fontSize": 12,
-    "window.zoomLevel": 1,
+    "explorer.confirmDelete": false,
+    "terminal.integrated.fontSize": 15.0,
     "settings.cycle": [
+        // {
+        //     "id": "relativeLineNumbers",
+        //     "values": [
+        //         {
+        //             "editor.lineNumbers": "off",
+        //             "editor.folding": false,
+        //             "editor.glyphMargin": false
+        //         },
+        //         {
+        //             "editor.lineNumbers": "on",
+        //             // "editor.folding": true,
+        //             // "editor.glyphMargin": true
+        //         }
+        //     ]
+        // },
+        // {
+        //     "id": "githd.blameView.enabled",
+        //     "values": [
+        //         {
+        //             "githd.blameView.enabled": false
+        //         },
+        //         {
+        //             "githd.blameView.enabled": true
+        //         }
+        //     ]
+        // }
+    ],
+    "editor.lineNumbers": "relative",
+    "redhat.telemetry.enabled": false,
+    "explorer.confirmDragAndDrop": false,
+    "editor.fontSize": 15,
+    "window.title": "${activeEditorLong}",
+    "terminal.integrated.gpuAcceleration": "off",
+    "vscode_vibrancy.opacity": 0.01,
+    "vscode_vibrancy.refreshInterval": 1,
+    "fzf-quick-open.initialWorkingDirectory": "/Users/david",
+    "fzf-quick-open.findDirectoriesCmd": "fd . --type d --hidden --follow -E .git -E .Trash -E Library -E .npm -E go/pkg/mod -E .docker -E Music/Music -E .oh-my-zsh -E .local/share -E .terminfo -E .vscode/extensions -E \"Pictures/Photos Library.photoslibrary\" -E .azure/cliextensions -E .tldrc -E .cache -E .zsh_sessions -E .terraform.d -E .azure",
+    "fzf-quick-open.ripgrepOptions": "",
+    "fzf-quick-open.ripgrepSearchStyle": "Smart case",
+    "command-runner.commands": {
+        "rgf": "rgf; exit"
+    },
+    "multiCommand.commands": [
         {
-            "id": "lineNumbers",
-            "values": [
-                {
-                    "editor.lineNumbers": "off",
-                    "editor.folding": false,
-                    "editor.glyphMargin": false
-                },
-                {
-                    "editor.lineNumbers": "on",
-                    // "editor.folding": true,
-                    // "editor.glyphMargin": true
-                }
+            "command": "multiCommand.newFileAndMoveRight",
+            "sequence": [
+                "workbench.action.files.newUntitledFile",
+                "workbench.action.moveEditorToRightGroup"
+            ]
+        },
+        {
+            "command": "multiCommand.newFileAndMoveBelow",
+            "sequence": [
+                "workbench.action.files.newUntitledFile",
+                "workbench.action.moveEditorToBelowGroup"
+            ]
+        },
+        {
+            "command": "multiCommand.openDiffAndFullScreen",
+            "sequence": [
+                "workbench.files.action.compareFileWith",
+                "workbench.action.joinAllGroups"
+            ]
+        },
+        {
+            "command": "multiCommand.toggleAndFocusPrimarySideBar",
+            "sequence": [
+                "workbench.action.toggleSidebarVisibility",
+                "workbench.action.focusSideBar"
+            ]
+        },
+        {
+            "command": "multiCommand.toggleAndFocusAuxiliaryBar",
+            "sequence": [
+                "workbench.action.toggleAuxiliaryBar",
+                "workbench.action.focusAuxiliaryBar"
+            ]
+        },
+        {
+            "command": "multiCommand.toggleAndFocusPanel",
+            "sequence": [
+                "workbench.action.togglePanel",
+                "workbench.action.focusPanel"
             ]
         }
+        // {
+        //     "command": "multiCommand.fzfQuickOpenAndCloseTerminal",
+        //     "sequence": [
+        //         "fzf-quick-open.runFzfFile",
+        //         "workbench.action.togglePanel",
+        //     ]
+        // },
     ],
-    "breadcrumbs.enabled": false,
-    "workbench.sideBar.location": "right",
-    "workbench.colorTheme": "Ayu Dark Bordered",
+    // "vscode_custom_css.imports": [
+    //     "file:///Users/david/.config/vscode/custom.css"
+    // ],
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.editor.tabCloseButton": "off",
+    "vim.enableNeovim": true,
+    "workbench.editor.labelFormat": "default",
+    "update.mode": "none",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "vscode_custom_css.statusbar": false,
+    "editor.guides.indentation": false,
+    "todohighlight.isEnable": true,
+    "todohighlight.isCaseSensitive": false,
+    "todohighlight.keywords": [
+        // "DEBUG:",
+        // "REVIEW:",
+        // {
+        //     "text": "NOTE:",
+        //     "color": "#ff0000",
+        //     "backgroundColor": "yellow",
+        //     "overviewRulerColor": "grey"
+        // },
+        // {
+        //     "text": "HACK:",
+        //     "color": "#000",
+        //     "isWholeLine": false,
+        // },
+        {
+            "text": "TODO:",
+            "color": "yellow",
+            // "border": "1px solid red",
+            "borderRadius": "2px", //NOTE: using borderRadius along with `border` or you will see nothing change
+            "backgroundColor": "rgba(0,0,0,.2)"
+        },
+        {
+            "text": "TODO",
+            "color": "yellow",
+            // "border": "1px solid red",
+            "borderRadius": "2px", //NOTE: using borderRadius along with `border` or you will see nothing change
+            "backgroundColor": "rgba(0,0,0,.2)"
+        }
+    ],
+    "vim.searchMatchTextColor": "#000000c4",
+    "vim.searchMatchColor": "#ffaa33",
+    "vim.searchHighlightTextColor": "#000000c4",
+    "vim.handleKeys": {
+        "<C-n>": false
+    },
     "workbench.activityBar.visible": false,
-    "editor.lineNumbers": "off",
-    // "workbench.editor.labelFormat": "medium"    
+    "terminal.integrated.fontFamily": "'JetBrainsMonoNerdFontComplete-ExtraLight', Menlo, Monaco, 'Courier New', monospace",
+    "terminal.integrated.fontWeightBold": "normal",
+    // "vim.normalModeKeyBindingsNonRecursive": [
+    //     {
+    //         "before": [
+    //             "g",
+    //             "H"
+    //         ],
+    //         "commands": [
+    //             {
+    //                 "command": "editor.action.showDefinitionPreviewHover"
+    //             }
+    //         ]
+    //     }
+    // ]
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                    "comment",
+                    "punctuation.definition.comment",
+                    "variable.language"
+                ],
+                "settings": {
+                    "fontStyle": ""
+                }
+            }
+        ]
+    },
+    "customizeUI.listRowHeight": 17,
+    "window.titleBarStyle": "native",
+    "customizeUI.stylesheet": {
+        ".search-view .search-widgets-container": "padding-top: 0px !important",
+        ".suggest-input-container": "padding: 3px 4px 3px !important;",
+        // the below removes toolbars everywhere
+        // it disables stuff that is needed (e.g on keyboard bindings we lose the type shortcut mode)
+        // ".monaco-toolbar": "display: none !important;",
+        ".nopanel.nosidebar.nostatusbar.fullscreen .monaco-toolbar": "display:none",
+        // https://github.com/iocave/customize-ui/issues/29
+        ".monaco-workbench .part.editor>.content .editor-group-container>.title .editor-actions .action-label, .monaco-workbench .part.editor>.content .editor-group-container>.title .title-actions .action-label": "height: 28px",
+        ".monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-container>.tab": "height: 28px",
+        ".monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-container": "height: 28px",
+        ".monaco-workbench .part.editor>.content .editor-group-container>.title .editor-actions": "height: 28px",
+        // This isn't in the original CSS, but there's a pesky `style="height: 35px"` in a child element
+        ".monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-and-actions-container": "height: 28px; overflow-y: hidden",
+        // side bar actions
+        ".monaco-workbench .part>.title": "height: 28px;",
+        ".monaco-workbench .part>.title>.title-label": "line-height: 28px;",
+        ".monaco-workbench .part>.title>.title-actions": "height: 28px;",
+        ".monaco-workbench .part>.title>.title-actions .action-label": "height: 28px; line-height: 28px;",
+        // panel tabs / actions
+        ".monaco-workbench .part.panel>.title>.panel-switcher-container>.monaco-action-bar": "height: 28px;",
+        // The padding for this is top: 3px; bottom: 4px, which is exactly the offset we need.
+        ".monaco-workbench .part.panel>.title>.panel-switcher-container>.monaco-action-bar .action-item": "padding-top: 0; padding-bottom: 0;",
+        ".monaco-workbench .part.panel .title": "height: 28px;",
+        "window.nativeFullScreen": false
+        // ".actions-container[aria-label='Editor actions'] .action-item .action-label:not([title='More Actions...']):not([title*='Split Editor Right'])": "display: none !important;",
+        // /* Tab bar height set height Ref: https://github.com/iocave/customize-ui/issues/29 */
+        // ".monaco-workbench .part.editor>.content .editor-group-container>.title .editor-actions .action-label, .monaco-workbench .part.editor>.content .editor-group-container>.title .title-actions .action-label": "height: 38px",
+        // //  ".monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-container > div.tab.tab-border-bottom": "height: 38px !important;",
+        // // ".monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-container": "height: 38px",
+        // ".monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-container>.tab": "height: 38px !important",
+        // "body.inline-title-bar .monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-container, body.inline-title-bar .monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-container>.tab, body.inline-title-bar .monaco-workbench .part.editor>.content .editor-group-container>.title .editor-actions": "height: 38px !important",
+        // // This isn't in the original CSS, but there's a pesky `style="height: 35px"` in a child element
+        // ".monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-and-actions-container": "height: 38px; overflow-y: hidden;",
+        // // side bar actions
+        // ".monaco-workbench .part>.title": "height: 38px;",
+        // ".monaco-workbench .part>.title>.title-label": "line-height: 38px;",
+        // ".monaco-workbench .part>.title>.title-actions": "height: 38px;",
+        // ".monaco-workbench .part>.title>.title-actions .action-label": "height: 38px; line-height: 38px;",
+        // // panel tabs / actions
+        // ".monaco-workbench .part.panel>.title>.panel-switcher-container>.monaco-action-bar": "height: 38px;",
+        // // The padding for this is top: 3px; bottom: 4px, which is exactly the offset we need.
+        // ".monaco-workbench .part.panel>.title>.panel-switcher-container>.monaco-action-bar .action-item": "padding-top: 0; padding-bottom: 0;",
+        // ".monaco-workbench .part.panel .title": "height: 38px;",
+        // "body.inline-title-bar .monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-container>.tab .monaco-icon-label:before": "height: 38px !important;",
+        // "body.inline-title-bar .monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-container>.tab .monaco-icon-label .monaco-icon-label-container": "line-height: 38px;",
+        // /* Toolbar (Terminal, Output, etc.) */
+        // ".monaco-toolbar > .monaco-action-bar > .actions-container": "height: 35px",
+        // ".monaco-toolbar > .monaco-action-bar > .actions-container > .monaco-dropdown-with-primary ": "display: flex; gap: 2px;",
+        // ".monaco-toolbar > .monaco-action-bar > .actions-container > .action-item > .dropdown-action-container > .monaco-dropdown > .dropdown-label > a.action-label": "display: flex; width: 100%;",
+        // ".monaco-toolbar > .monaco-action-bar > .actions-container > .action-item > .dropdown-action-container > .monaco-dropdown > .dropdown-label > a.action-label::before": "margin: 0 auto;",
+        // /* Top-left activity bar fix */
+        // ".monaco-workbench .part.activitybar > .content": "height: 100% !important;" 
+    },
+    "breadcrumbs.enabled": false, // TODO: maybe this is better enabled?
+    "gitlens.currentLine.enabled": false,
+    // "githd.blameView.enabled": false,
+    "githd.logView.displayExpressStatus": false,
+    "githd.blameView.enabled": false,
+    "audioCues.lineHasInlineSuggestion": "off",
+    "workbench.tips.enabled": false,
+    "editor.inlineSuggest.enabled": true,
+    "material-icon-theme.folders.color": "#90a4ae",
+    "material-icon-theme.opacity": 1,
+    "material-icon-theme.folders.theme": "classic",
+    "material-icon-theme.saturation": 0,
+    "material-icon-theme.activeIconPack": "",
+    "material-icon-theme.hidesExplorerArrows": true,
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": true,
+        "plaintext": true,
+        "markdown": true
+    },
+    "indentRainbow.includedLanguages": [
+        "yaml"
+    ],
+    "indentRainbow.indicatorStyle": "light",
+    "indentRainbow.lightIndicatorStyleLineWidth": 1,
+    "indentRainbow.colors": [
+        "#555050",
+        "#555050",
+        "#555050",
+        "#555050"
+        // "rgb(0,0,0)",
+        // "rgb(0,0,0)",
+        // "rgb(0,0,0)",
+        // "rgb(0,0,0)"
+        // "rgba(255,255,64,0.07)",
+        // "rgba(127,255,127,0.07)",
+        // "rgba(255,127,255,0.07)",
+        // "rgba(79,236,236,0.07)"
+    ],
+    "editor.glyphMargin": false,
+    "vs-kubernetes": {
+        "vs-kubernetes.crd-code-completion": "enabled"
+    },
+    "chatgpt.authenticationType": "Google Authentication",
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "diffEditor.renderSideBySide": false
 }

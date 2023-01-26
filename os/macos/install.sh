@@ -17,28 +17,8 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 formulae=(
     util-linux
-    bash
-    # bash-completion@2
-    # bash-git-prompt
-    # bash-snippets
     zsh
-    # zsh-completions
-    # zsh-syntax-highlighting
-    # zsh-autosuggestions
-    # zsh-history-substring-search
-    # zsh-lovers
-    # zsh-navigation-tools
-    # zsh-vi-mode
-    fish
-    fisher
-    nushell
-    starship
-    oh-my-posh
-    xonsh
-    elvish
-    vim
     neovim
-    nano
     git
     curl
     wget
@@ -62,9 +42,7 @@ formulae=(
     htop
     jq
     yq
-    romkatv/powerlevel10k/powerlevel10k
     Azure/kubelogin/kubelogin
-    pure
     adr-tools
     curlie
     gh
@@ -83,39 +61,24 @@ formulae=(
     koekeishiya/formulae/yabai
     koekeishiya/formulae/skhd
     cmacrae/formulae/spacebar
-    direnv
-    fasd
+    openvpn
+    warp-cli
 )
 
 inf "Installing brew formulae $(_g ${formulae[@]})"
 brew install -f ${formulae[@]}
 
 casks=(
-    powershell
     visual-studio-code
-    rider
     intellij-idea
-    iterm2
     alacritty
-    kitty
-    google-chrome
     firefox
-    brave-browser
-    slack
-    microsoft-teams
-    zoom
-    discord
+    zoom # only comms i can't use on the browser
     dotnet-sdk
     docker
-    openvpn-connect
-    cloudflare-warp
-    rectangle
     maccy
     meetingbar
-    caffeine
-    # bitwarden # the brew version can't be used for browser integration
-    balenaetcher
-    vmware-fusion
+    # bitwarden # TODO: the brew version can't be used for browser integration, install from mas?
     homebrew/cask-fonts/font-fontawesome
     homebrew/cask-fonts/font-jetbrains-mono
 )
@@ -162,29 +125,29 @@ else
     fi
 fi
 
-inf "Installing $(_g oh-my-bash)"
-if [ -d $HOME/.oh-my-bash ]; then
-    warn "$(_y oh-my-bash) already installed"
-else
-    if [ "$yes" = 1 ]; then
-        bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" --unattended
-    else
-        bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
-    fi
-fi
+# inf "Installing $(_g oh-my-bash)"
+# if [ -d $HOME/.oh-my-bash ]; then
+#     warn "$(_y oh-my-bash) already installed"
+# else
+#     if [ "$yes" = 1 ]; then
+#         bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" --unattended
+#     else
+#         bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+#     fi
+# fi
 
-inf "Installing $(_g oh-my-fish)"
-if [ -d $HOME/.local/share/omf ]; then
-    warn "$(_y oh-my-fish) already installed"
-else
-    curl -L https://get.oh-my.fish | fish -c 'source - --noninteractive --yes'
-fi
+# inf "Installing $(_g oh-my-fish)"
+# if [ -d $HOME/.local/share/omf ]; then
+#     warn "$(_y oh-my-fish) already installed"
+# else
+#     curl -L https://get.oh-my.fish | fish -c 'source - --noninteractive --yes'
+# fi
 
 inf "Installing $(_g nix)"
 if [ -d $HOME/.nix-profile ]; then
     warn "$(_y nix) already installed"
 else
-    sudo rm -f /etc/bashrc.backup-before-nix
+    # sudo rm -f /etc/bashrc.backup-before-nix
     sudo rm -f /etc/zshrc.backup-before-nix
     sh <(curl -L https://nixos.org/nix/install) --yes
 fi
@@ -208,32 +171,20 @@ for extension in ${code_extensions[@]}; do
 done
 code --disable-extension vscodevim.vim
 
-inf "Installing font $(_g FiraCode)"
-curl -fLo $HOME/Library/Fonts/FiraCode.zip "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraCode.zip"
-unzip -o $HOME/Library/Fonts/FiraCode.zip -d $HOME/Library/Fonts
-rm $HOME/Library/Fonts/FiraCode.zip
-# inf "Installing font $(_g JetBrainsMono)"
-# curl -fLo $HOME/Library/Fonts/JetBrainsMono.zip "https://download.jetbrains.com/fonts/JetBrainsMono-2.242.zip"
-# unzip -o $HOME/Library/Fonts/JetBrainsMono.zip -d $HOME/Library/Fonts
-# rm $HOME/Library/Fonts/JetBrainsMono.zip
-inf "Installing font $(_g Meslo Nerd Font patched for Powerlevel10k)"
-wget -qO "$HOME/Library/Fonts/MesloLGS NF Regular.ttf" "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf"
-wget -qO "$HOME/Library/Fonts/MesloLGS NF Bold.ttf" "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf"
-wget -qO "$HOME/Library/Fonts/MesloLGS NF Italic.ttf" "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf"
-wget -qO "$HOME/Library/Fonts/MesloLGS NF Bold Italic.ttf" "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf"
-
 inf "Creating symlinks"
 symlink $dir/.config/.gitconfig $HOME/.gitconfig
-symlink $dir/.config/.bashrc $HOME/.bashrc
 symlink $dir/.config/.zshrc $HOME/.zshrc
-symlink $dir/.config/.p10k.zsh $HOME/.p10k.zsh
-symlink $dir/.config/config.fish $HOME/.config/fish/config.fish
 symlink $dir/.config/.tmux.conf $HOME/.tmux.conf
-symlink $dir/.config/config.nu $HOME/.config/nushell/config.nu
-symlink $dir/.config/env.nu $HOME/.config/nushell/env.nu
-symlink $dir/.config/Microsoft.PowerShell_profile.ps1 $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1
 symlink $dir/.config/vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
 symlink $dir/.config/vscode/keybindings.json "$HOME/Library/Application Support/Code/User/keybindings.json"
 symlink $dir/.config/.yabairc $HOME/.yabairc
 symlink $dir/.config/.skhdrc $HOME/.skhdrc
 symlink $dir/.config/spacebarrc $HOME/.config/spacebar/spacebarrc
+symlink $dir/dotfiles-private/.env $HOME/.env.private
+symlink $dir/dotfiles-work/.env $HOME/.env.work
+symlink $dir/dotfiles-work/.gitconfig $HOME/.gitconfig.work
+for file in $dir/dotfiles-work/.gitconfig.*; do
+    symlink $file $HOME/$(basename $file)
+done
+
+cp -rf $dir/dotfiles-private/.bin $HOME/.bin

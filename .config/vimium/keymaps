@@ -1,8 +1,23 @@
-map wi Vomnibar.activate keyword=wi
-map go Vomnibar.activate keyword=go
-map gd Vomnibar.activate keyword=gd
-map gm Vomnibar.activate keyword=gm
-map yo Vomnibar.activate keyword=yo
-map am Vomnibar.activate keyword=am
-map sc Vomnibar.activate keyword=sc
-map gh Vomnibar.activate keyword=gh
+map wi Vomnibar.activateInNewTab keyword=wi
+map go Vomnibar.activateInNewTab keyword=go
+map gd Vomnibar.activateInNewTab keyword=gd
+map gm Vomnibar.activateInNewTab keyword=gm
+map yo Vomnibar.activateInNewTab keyword=yo
+map am Vomnibar.activateInNewTab keyword=am
+map sc Vomnibar.activateInNewTab keyword=sc
+map gh Vomnibar.activateInNewTab keyword=gh
+map re Vomnibar.activateInNewTab keyword=re
+unmap r
+map R reload
+unmap <a-p>
+map ap togglePinTab
+unmap t
+map t Vomnibar.activateTabSelection
+unmap T
+map T createTab
+# unmap d
+# umap u
+map <c-d> scrollPageDown
+map <c-u> scrollPageUp
+map <c-f> LinkHints.activateModeToOpenInNewForegroundTab
+map <c-t> visitPreviousTab

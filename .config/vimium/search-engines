@@ -6,3 +6,4 @@ wi: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikiped
 am: https://www.amazon.es/s/?field-keywords=%s Amazon
 sc: https://soundcloud.com/search/sets?q=%s SoundCloud
 gh: https://github.com/search?o=desc&q=%s&s=&type=Repositories GitHub
+re: https://www.reddit.com/search/?q=%s Reddit

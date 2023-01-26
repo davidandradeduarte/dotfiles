@@ -4,11 +4,12 @@ Home for my dotfiles and initial setup configurations.
 
 No automation tools being used, just plain shell scripts and symbolic links.
 
-Currently supports: macOS, Ubuntu.
+Currently supports: macOS, Ubuntu. (Fedora next on the list)  
+I'm mostly using macOS now, other OSs might be outdated.
 
 Use at your own risk.
 
-![editor](screenshots/alacritty.png)
+![editor](screenshots/screen.png)
 More images [here](screenshots).
 
 Table of Contents

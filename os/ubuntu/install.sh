@@ -17,8 +17,6 @@ if [[ $arch != "aarch64" ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     formulae=(
         k9s
-        nushell
-        oh-my-posh
         curlie
         stern
     )
@@ -87,24 +85,13 @@ echo \
     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
 
-inf "Adding $(_g fish) repository"
-sudo apt-add-repository -y ppa:fish-shell/release-3
-
 inf "Adding $(_g universe) repository"
 sudo add-apt-repository -y universe
 
-inf "Adding $(_g fasd) repository"
-sudo add-apt-repository -y ppa:aacebedo/fasd
-
 sudo apt update && sudo apt autoremove -y
 apt_packages=(
-    bash
-    bash-completion
     zsh
-    fish
-    vim
     neovim
-    nano
     tmux
     htop
     bat # batcat bin
@@ -115,18 +102,13 @@ apt_packages=(
     helm
     ripgrep
     jq
-    xonsh
-    elvish
     gh
     code
-    code-insiders
     nodejs
     docker-ce
     docker-ce-cli
     containerd.io
     docker-compose-plugin
-    direnv
-    fasd
 )
 inf "Installing apt packages $(_g ${apt_packages[@]})"
 sudo apt install -y --assume-yes ${apt_packages[@]}
@@ -150,68 +132,6 @@ else
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     fi
 fi
-
-inf "Installing $(_g oh-my-bash)"
-if [ -d $HOME/.oh-my-bash ]; then
-    warn "$(_y oh-my-bash) already installed"
-else
-    if [ "$yes" = 1 ]; then
-        bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" --unattended
-    else
-        bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
-    fi
-fi
-
-inf "Installing $(_g pure)"
-mkdir -p "$HOME/.zsh"
-if [ -d "$HOME/.zsh/pure" ]; then
-    warn "$(_y pure) already installed"
-else
-    git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
-    fpath+=($HOME/.zsh/pure)
-fi
-
-inf "Installing $(_g powerlevel10k)"
-if [ -d $HOME/powerlevel10k ]; then
-    warn "$(_y powerlevel10k) already installed"
-else
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/powerlevel10k
-fi
-
-inf "Installing $(_g oh-my-fish)"
-if [ -d $HOME/.local/share/omf ]; then
-    warn "$(_y oh-my-fish) already installed"
-else
-    curl -L https://get.oh-my.fish | fish -c 'source - --noninteractive --yes'
-fi
-
-inf "Installing $(_g fisher)"
-fish -c 'curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher'
-
-inf "Installing $(_g starship)"
-curl -sS https://starship.rs/install.sh | sh -s -- -y
-
-if ! test $(which posh); then
-    inf "Installing $(_g oh-my-posh)"
-    posh_arch=$(if [[ $arch == "aarch64" ]]; then echo "arm64"; else echo "amd64"; fi)
-    sudo wget "https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-${posh_arch}" -O /usr/local/bin/oh-my-posh
-    sudo chmod +x /usr/local/bin/oh-my-posh
-    mkdir -p $HOME/.poshthemes
-    wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O $HOME/.poshthemes/themes.zip
-    unzip -o $HOME/.poshthemes/themes.zip -d $HOME/.poshthemes
-    chmod u+rw $HOME/.poshthemes/*.omp.*
-    rm $HOME/.poshthemes/themes.zip
-fi
-
-inf "Installing $(_g powershell)"
-pwsh_version=$(curl -s https://api.github.com/repos/PowerShell/PowerShell/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
-pwsh_arch=$(if [[ $arch == "aarch64" ]]; then echo "arm64"; else echo "x64"; fi)
-pwsh_version=${pwsh_version:1}
-sudo wget "https://github.com/PowerShell/PowerShell/releases/download/v${pwsh_version}/powershell-${pwsh_version}-linux-${pwsh_arch}.tar.gz" -O /tmp/powershell.tar.gz
-sudo mkdir -p /opt/microsoft/powershell/${pwsh_version}
-sudo tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/${pwsh_version}
-sudo chmod +x /opt/microsoft/powershell/${pwsh_version}/pwsh
-symlink /opt/microsoft/powershell/${pwsh_version}/pwsh /usr/bin/pwsh
 
 inf "Configuring $(_g docker)"
 if [ -z "$(pidof systemd)" ]; then
@@ -253,9 +173,6 @@ else
     sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
     symlink /opt/kubectx/kubectx /usr/local/bin/kubectx
     symlink /opt/kubectx/kubens /usr/local/bin/kubens
-    mkdir -p $HOME/.config/fish/completions
-    symlink /opt/kubectx/completion/kubectx.fish $HOME/.config/fish/completions/
-    symlink /opt/kubectx/completion/kubens.fish $HOME/.config/fish/completions/
 fi
 
 inf "Installing $(_g terraform)"
@@ -307,9 +224,7 @@ curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/insta
 inf "Installing $(_g rust)"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
-rust_crates=(
-    nu
-)
+rust_crates=()
 inf "Installing rust crates $(_g ${rust_crates[@]})"
 for crate in ${rust_crates[@]}; do
     if [ command -v $crate ] &>/dev/null; then
@@ -346,8 +261,6 @@ rm -rf /tmp/bin /tmp/kubelogin.zip
 
 inf "Installing $(_g flux)"
 curl -s https://fluxcd.io/install.sh | sudo bash
-mkdir -p $HOME/.config/fish/completions
-flux completion fish >$HOME/.config/fish/completions/flux.fish
 
 inf "Installing $(_g azure-cli)"
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash -s -- -y
@@ -356,7 +269,7 @@ inf "Installing $(_g nix)"
 if [ -d $HOME/.nix-profile ]; then
     warn "$(_y nix) already installed"
 else
-    sudo rm -f /etc/bashrc.backup-before-nix
+    # sudo rm -f /etc/bashrc.backup-before-nix
     sudo rm -f /etc/zshrc.backup-before-nix
     sh <(curl -L https://nixos.org/nix/install) --daemon --yes
 fi
@@ -380,30 +293,24 @@ for extension in ${code_extensions[@]}; do
 done
 code --disable-extension vscodevim.vim
 
-inf "Installing font $(_g FiraCode)"
-curl -fLo $HOME/.local/share/fonts/FiraCode.zip --create-dirs "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraCode.zip"
-unzip -o $HOME/.local/share/fonts/FiraCode.zip -d $HOME/.local/share/fonts
-rm -f $HOME/.local/share/fonts/FiraCode.zip
 inf "Installing font $(_g JetBrainsMono)"
 curl -fLo $HOME/.local/share/fonts/JetBrainsMono.zip --create-dirs "https://download.jetbrains.com/fonts/JetBrainsMono-2.242.zip"
 unzip -o $HOME/.local/share/fonts/JetBrainsMono.zip -d $HOME/.local/share/fonts
 rm -f $HOME/.local/share/fonts/JetBrainsMono.zip
-inf "Installing font $(_g Meslo Nerd Font patched for Powerlevel10k)"
-wget -qO "$HOME/.local/share/fonts/MesloLGS NF Regular.ttf" "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf"
-wget -qO "$HOME/.local/share/fonts/MesloLGS NF Bold.ttf" "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf"
-wget -qO "$HOME/.local/share/fonts/MesloLGS NF Italic.ttf" "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf"
-wget -qO "$HOME/.local/share/fonts/MesloLGS NF Bold Italic.ttf" "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf"
+
 fc-cache -f -v
 
 inf "Creating symlinks"
 symlink $dir/.config/.gitconfig $HOME/.gitconfig
-symlink $dir/.config/.bashrc $HOME/.bashrc
 symlink $dir/.config/.zshrc $HOME/.zshrc
-symlink $dir/.config/.p10k.zsh $HOME/.p10k.zsh
-symlink $dir/.config/config.fish $HOME/.config/fish/config.fish
 symlink $dir/.config/.tmux.conf $HOME/.tmux.conf
-symlink $dir/.config/config.nu $HOME/.config/nushell/config.nu
-symlink $dir/.config/env.nu $HOME/.config/nushell/env.nu
-symlink $dir/.config/Microsoft.PowerShell_profile.ps1 $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1
 symlink $dir/.config/vscode/settings.json $HOME/.config/Code/User/settings.json
 symlink $dir/.config/vscode/keybindings.json $HOME/.config/Code/User/keybindings.json
+symlink $dir/dotfiles-private/.env $HOME/.env.private
+symlink $dir/dotfiles-work/.env $HOME/.env.work
+symlink $dir/dotfiles-work/.gitconfig $HOME/.gitconfig.work
+for file in $dir/dotfiles-work/.gitconfig.*; do
+    symlink $file $HOME/$(basename $file)
+done
+
+cp -rf $dir/dotfiles-private/.bin $HOME/.bin

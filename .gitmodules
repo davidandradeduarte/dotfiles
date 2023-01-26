@@ -1,0 +1,6 @@
+[submodule "dotfiles-work"]
+	path = dotfiles-work
+	url = https://github.com/davidandradeduarte/dotfiles-work.git
+[submodule "dotfiles-private"]
+	path = dotfiles-private
+	url = https://github.com/davidandradeduarte/dotfiles-private.git

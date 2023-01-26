@@ -1,46 +1,109 @@
-/* Example userChrome.css file */
+.titlebar-buttonbox-container {
+    display: none;
+}
 
-/* Import your desired components first */
+.tab-close-button {
+    display: none !important;
+}
 
-@import url(chrome/tab_close_button_always_on_hover.css);
-@import url(chrome/tab_loading_progress_throbber.css);
-@import url(chrome/button_effect_scale_onclick.css);
-@import url(chrome/blank_page_background.css);
-@import url(chrome/autohide_menubar.css);
-@import url(chrome/hide_toolbox_top_bottom_borders.css);
-@import url(chrome/vertical_context_navigation.css);
-@import url(chrome/minimal_popup_scrollbars.css);
-@import url(chrome/button_effect_icon_glow.css);
-@import url(chrome/dark_context_menus.css);
-@import url(chrome/dark_additional_windows.css);
-@import url(chrome/dark_checkboxes_and_radios.css);
-@import url(chrome/minimal_text_fields.css);
-@import url(chrome/minimal_toolbarbuttons.css);
-@import url(chrome/urlbar_centered_text.css);
-@import url(chrome/hide_urlbar_first_row.css);
-@import url(chrome/autohide_bookmarks_and_main_toolbars.css);
-/* @import url(chrome/navbar_below_content.css);
-@import url(chrome/tabs_below_content.css); */
-
-/* Apply your custom modifications after imports */
+.titlebar-spacer {
+    display: none;
+}
 
 :root {
-    --toolbar-bgcolor: #282828 !important;
-    --uc-menu-bkgnd: var(--toolbar-bgcolor);
-    --arrowpanel-background: var(--toolbar-bgcolor) !important;
-    --autocomplete-popup-background: var(--toolbar-bgcolor) !important;
-    --uc-menu-disabled: rgb(90, 90, 90) !important;
-    --lwt-toolbar-field-focus: #282828 !important;
+    --tab-min-height: 20px !important;
+    --tab-max-height: 20px !important;
 }
 
-#sidebar-box {
-    --sidebar-background-color: var(--toolbar-bgcolor) !important;
+.tab-throbber-tabslist,
+.tab-throbber,
+.tab-icon-pending,
+.tab-icon-image,
+.tab-sharing-icon-overlay,
+.tab-icon-overlay {
+    height: 14px !important;
+    width: 14px !important;
 }
 
-window.sidebar-panel {
-    --lwt-sidebar-background-color: #282828 !important;
+.tab-background:-moz-lwtheme-brighttext {
+    background-color: #171819 !important;
 }
 
-#tabbrowser-tabpanels {
-    background-color: var(--uc-light-bkgnd-color, #282828) !important;
+.tab-background {
+    background-color: #171819 !important;
+}
+
+#urlbar-input {
+    height: 15px !important;
+}
+
+#urlbar {
+    min-height: 23px !important;
+}
+
+.toolbarbutton-badge {
+    min-width: 10px !important;
+}
+
+#nav-bar>.toolbarbutton-1 {
+    padding: 0px !important;
+}
+
+.urlbar-page-action {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.notification-anchor-icon {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.bookmark-item {
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+}
+
+#tabbrowser-tabs .tab-text {
+    font-family: JetBrains Mono;
+    font-size: 14 !important;
+    font-weight: 300 !important;
+}
+
+#urlbar,
+#searchbar .searchbar-textbox {
+    font-family: JetBrains Mono;
+    font-size: 14 !important;
+    font-weight: 300 !important;
+}
+
+menubar>menu,
+toolbar,
+toolbar>.toolbarbutton-text,
+.toolbarbutton-text,
+#nav-bar>.toolbarbutton-1,
+.toolbarbutton-menubutton-button>.toolbarbutton-text,
+.toolbarbutton-1>.toolbarbutton-text,
+toolbarbutton.bookmark-item,
+#bookmarks-toolbox,
+menubutton,
+menulist,
+menu,
+menuitem,
+toolbar,
+tree,
+tooltip,
+sidebarheader,
+#CustomizeToolbarWindow,
+#main-box,
+palette-box,
+#wrapper-tabextensions-tablist-button,
+wrapper-tabextensions-labelTabSession-button {
+    color: #ffffff !important;
+    font-weight: 300;
+    font-family: JetBrains Mono !important;
+}
+
+#star-button {
+    display: none;
 }
