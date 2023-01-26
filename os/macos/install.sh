@@ -175,6 +175,7 @@ inf "Creating symlinks"
 symlink $dir/.config/.gitconfig $HOME/.gitconfig
 symlink $dir/.config/.zshrc $HOME/.zshrc
 symlink $dir/.config/.tmux.conf $HOME/.tmux.conf
+symlink $dir/.config/.alacritty.yml $HOME/.alacritty.yml
 symlink $dir/.config/vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
 symlink $dir/.config/vscode/keybindings.json "$HOME/Library/Application Support/Code/User/keybindings.json"
 symlink $dir/.config/.yabairc $HOME/.yabairc
@@ -186,5 +187,3 @@ symlink $dir/dotfiles-work/.gitconfig $HOME/.gitconfig.work
 for file in $dir/dotfiles-work/.gitconfig.*; do
     symlink $file $HOME/$(basename $file)
 done
-
-cp -rf $dir/dotfiles-private/.bin $HOME/.bin
