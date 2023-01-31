@@ -274,10 +274,9 @@ else
     sh <(curl -L https://nixos.org/nix/install) --daemon --yes
 fi
 
-inf "Configuring $(_g vim)"
-curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-symlink $dir/.config/.vimrc $HOME/.vimrc
-vim +'PlugInstall --sync' +qa
+inf "Configuring $(_g neovim)"
+git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+nvim --headless +PackerSync +qall
 
 code_extensions=()
 while IFS= read -r line; do
