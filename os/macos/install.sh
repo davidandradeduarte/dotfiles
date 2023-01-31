@@ -63,19 +63,21 @@ formulae=(
     cmacrae/formulae/spacebar
     openvpn
     warp-cli
+    colima
+    docker
 )
 
 inf "Installing brew formulae $(_g ${formulae[@]})"
 brew install -f ${formulae[@]}
 
 casks=(
+    karabiner-elements
     visual-studio-code
     intellij-idea
     alacritty
     firefox
     zoom # only comms i can't use on the browser
     dotnet-sdk
-    docker
     maccy
     meetingbar
     # bitwarden # TODO: the brew version can't be used for browser integration, install from mas?
@@ -152,10 +154,9 @@ else
     sh <(curl -L https://nixos.org/nix/install) --yes
 fi
 
-inf "Configuring $(_g vim)"
-curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-symlink $dir/.config/.vimrc $HOME/.vimrc
-vim +'PlugInstall --sync' +qa
+inf "Configuring $(_g neovim)"
+git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+/opt/homebrew/bin/nvim --headless +PackerSync +qall
 
 code_extensions=()
 while IFS= read -r line; do
@@ -181,6 +182,7 @@ symlink $dir/.config/vscode/keybindings.json "$HOME/Library/Application Support/
 symlink $dir/.config/.yabairc $HOME/.yabairc
 symlink $dir/.config/.skhdrc $HOME/.skhdrc
 symlink $dir/.config/spacebarrc $HOME/.config/spacebar/spacebarrc
+symlink $dir/.config/karabiner.json $HOME/.config/karabiner/karabiner.json
 symlink $dir/dotfiles-private/.env $HOME/.env.private
 symlink $dir/dotfiles-work/.env $HOME/.env.work
 symlink $dir/dotfiles-work/.gitconfig $HOME/.gitconfig.work

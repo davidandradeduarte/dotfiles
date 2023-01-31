@@ -160,4 +160,4 @@ cmd - h : skhd -k ""
 cmd - m : skhd -k ""
 ctrl - m : skhd -k ""
 
-# todo: caps lock to ctrl (currently done in karabiner)
+# capslock to control is done in karabiner
