@@ -183,6 +183,7 @@ symlink $dir/.config/.yabairc $HOME/.yabairc
 symlink $dir/.config/.skhdrc $HOME/.skhdrc
 symlink $dir/.config/spacebarrc $HOME/.config/spacebar/spacebarrc
 symlink $dir/.config/karabiner.json $HOME/.config/karabiner/karabiner.json
+symlink $dir/.config/.ideavimrc $HOME/.ideavimrc
 symlink $dir/dotfiles-private/.env $HOME/.env.private
 symlink $dir/dotfiles-work/.env $HOME/.env.work
 symlink $dir/dotfiles-work/.gitconfig $HOME/.gitconfig.work

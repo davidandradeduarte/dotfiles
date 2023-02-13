@@ -1,0 +1,12 @@
+set surround              " visual select and then S
+set ignorecase            " Make searches case-insensitive.
+set incsearch             " But do highlight as you type your search.
+set clipboard=unnamed     " yank and paste from system clipboard
+set clipboard+=ideaput    " ctrl + c & v from ideavim
+set hls
+
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+

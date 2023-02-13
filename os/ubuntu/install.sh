@@ -306,6 +306,7 @@ symlink $dir/.config/.tmux.conf $HOME/.tmux.conf
 symlink $dir/.config/.alacritty.yml $HOME/.alacritty.yml
 symlink $dir/.config/vscode/settings.json $HOME/.config/Code/User/settings.json
 symlink $dir/.config/vscode/keybindings.json $HOME/.config/Code/User/keybindings.json
+symlink $dir/.config/.ideavimrc $HOME/.ideavimrc
 symlink $dir/dotfiles-private/.env $HOME/.env.private
 symlink $dir/dotfiles-work/.env $HOME/.env.work
 symlink $dir/dotfiles-work/.gitconfig $HOME/.gitconfig.work
